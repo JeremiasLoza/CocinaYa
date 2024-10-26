@@ -7,9 +7,8 @@
 }
 
 /* Cambio de color cuando está activo */
-.heart-icon.active {
-    color: red;
-}
+
+
 
 .card-body {
     display: flex;
