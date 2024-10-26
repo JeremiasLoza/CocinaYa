@@ -1,11 +1,4 @@
-h5{
-    display: inline;
-}
-p{
-    text-align: center;
-    display: inline;
-    background-color: aqua;
-}
+/*corazon sin marcar */
 .heart-icon {
     font-size: 1.5rem;
     color: gray;
@@ -16,4 +9,10 @@ p{
 /* Cambio de color cuando está activo */
 .heart-icon.active {
     color: red;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre elementos */
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
 }
