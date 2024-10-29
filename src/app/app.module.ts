@@ -7,6 +7,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { HomePageComponent } from './home-page/home-page.component';
 import { CardComponent } from './components/card/card.component';
 import { ListRecipesComponent } from './components/list-recipes/list-recipes.component';
+import { provideHttpClient } from '@angular/common/http';
 
 
 
@@ -23,7 +24,9 @@ import { ListRecipesComponent } from './components/list-recipes/list-recipes.com
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
