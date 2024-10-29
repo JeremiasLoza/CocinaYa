@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavigationBarComponent {
   categoriesName: String[] = [];
-
+  isLogged = false;
   
 
 
