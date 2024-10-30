@@ -3,25 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CardComponent } from './components/card/card.component';
 import { ListRecipesComponent } from './components/list-recipes/list-recipes.component';
+import { SharedModule } from './shared/shared.module';
 
 
 
 
 @NgModule({
   declarations: [
-    NavigationBarComponent,
     AppComponent,
     HomePageComponent,
     CardComponent,
-    ListRecipesComponent
+    ListRecipesComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
