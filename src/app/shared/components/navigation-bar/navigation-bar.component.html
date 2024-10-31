@@ -3,7 +3,7 @@
     <div class="container-fluid">
       
         <a class="navbar-brand">Cocina Ya</a>
-      
+      <!-- Responsive button to hide options -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,6 +11,7 @@
         
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
+
                 <li class="nav-item">
                     <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
                 </li>
@@ -21,11 +22,12 @@
                             data-bs-toggle="dropdown">Categories</button>
                         <ul class="dropdown-menu">
                             <li *ngFor="let category of categories">
-                                <a class="dropdown-item">{{category.strCategory}}</a>
+                                <a class="dropdown-item nav-link" routerLink="category/:{{category.strCategory}}">{{category.strCategory}}</a>
                             </li>
                         </ul>
                     </div>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" routerLink="recipes" routerLinkActive="active">About us</a>
                 </li>
