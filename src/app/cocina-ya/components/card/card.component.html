@@ -1,5 +1,5 @@
 
-<a [routerLink]="['/lookup.php?i=', recipe.idMeal]"  *ngIf="recipe" class="card " style="width: 18rem;">
+<a  *ngIf="recipe" class="card " style="width: 18rem;">
     
         <img *ngIf = "recipe.strMealThumb" [src]="recipe.strMealThumb" alt= "{{recipe.strMeal}}" class="img-fluid">
         <div class="card-body">
@@ -11,3 +11,4 @@
      </div>
 </a>
  
+

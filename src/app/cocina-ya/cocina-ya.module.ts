@@ -4,6 +4,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { CategoryPageComponent } from './components/category-page/category-page.component';
 import { ListRecipesComponent } from './components/list-recipes/list-recipes.component';
 import { CardComponent } from './components/card/card.component';
+import { RouterLink, RouterModule } from '@angular/router';
 
 
 
@@ -15,6 +16,7 @@ import { CardComponent } from './components/card/card.component';
     CardComponent
   ],
   imports: [
+    RouterModule,
     CommonModule
   ],
   exports:[
