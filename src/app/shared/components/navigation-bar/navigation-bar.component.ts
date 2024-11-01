@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import { CategoryService } from '../../../category.service';
-import { Category } from '../../../models/category';
+import { CategoryService } from '../../../cocina-ya/services/category.service';
+import { Category } from '../../../cocina-ya/models/category';
 import { Observer } from 'rxjs';
 
 @Component({
