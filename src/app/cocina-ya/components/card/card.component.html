@@ -1,0 +1,12 @@
+<div  *ngIf="recipe" class="card " style="width: 18rem;">
+    
+       <img *ngIf = "recipe.strMealThumb" [src]="recipe.strMealThumb" alt= "{{recipe.strMeal}}" class="img-fluid">
+       <div class="card-body">
+            <h5 class="card-title">{{recipe.strMeal}}</h5>
+    
+            <i [class]= "isHeartActive ? 'fas fa-heart heart-icon' : 'far fa-heart heart-icon'"
+            (click)="toggleHeart()"
+            ></i>
+    </div>
+</div>
+
