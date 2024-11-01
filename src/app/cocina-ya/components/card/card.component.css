@@ -18,6 +18,10 @@
 
 .card {
   margin: 10px;
-  width: 100%; /* Permite que las tarjetas usen el ancho completo de la columna */
-  /* Ajustes adicionales como bordes, sombras, etc. */
+  width: 100%;
+  text-decoration: none; 
+  color: inherit;
 }   
+.card:hover {
+  text-decoration: none;
+}
