@@ -22,7 +22,7 @@
                             data-bs-toggle="dropdown">Categories</button>
                         <ul class="dropdown-menu">
                             <li *ngFor="let category of categories">
-                                <a class="dropdown-item nav-link" routerLink="category/:{{category.strCategory}}">{{category.strCategory}}</a>
+                                <a class="dropdown-item nav-link" routerLink="category/{{category.strCategory}}">{{category.strCategory}}</a>
                             </li>
                         </ul>
                     </div>
