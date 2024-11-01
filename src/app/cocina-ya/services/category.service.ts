@@ -15,7 +15,7 @@ export class CategoryService {
     return this.http.get<any>(`${this.apiUrl}categories.php`);
   }
 
-  getRecipeByCategory(category : String) : Observable<any> {
+  getRecipeByCategory(category : string | null) : Observable<any> {
     return this.http.get<any>(`${this.apiUrl}filter.php?c=${category}`);
   }
 
