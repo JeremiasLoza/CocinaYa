@@ -9,12 +9,5 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./list-recipes.component.css']
 })
 export class ListRecipesComponent  {
- 
-
   @Input() recipesList : Recipe [] = [];
-
-  constructor(private recipeService : RecipeService, private route : ActivatedRoute){};
-
-
-
 }
