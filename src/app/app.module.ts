@@ -6,6 +6,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CardComponent } from './components/card/card.component';
 import { ListRecipesComponent } from './components/list-recipes/list-recipes.component';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -21,7 +22,8 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

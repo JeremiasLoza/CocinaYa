@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
