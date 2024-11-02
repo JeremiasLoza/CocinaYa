@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Recipe } from '../../models/recipe';
+
 
 @Component({
   selector: 'app-card',
@@ -9,6 +10,9 @@ import { Recipe } from '../../models/recipe';
 
 export class CardComponent  {
   isHeartActive = false;
+
+  @Input()
+   recipe!: Recipe;
 
   toggleHeart(): void{
     this.isHeartActive = !this.isHeartActive;
