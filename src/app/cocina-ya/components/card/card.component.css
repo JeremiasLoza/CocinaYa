@@ -1,0 +1,27 @@
+/*corazon sin marcar */
+.heart-icon {
+    font-size: 1.5rem;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Cambio de color cuando está activo */
+
+
+
+.card-body {
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre elementos */
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
+}
+
+.card {
+  margin: 10px;
+  width: 100%;
+  text-decoration: none; 
+  color: inherit;
+}   
+.card:hover {
+  text-decoration: none;
+}
