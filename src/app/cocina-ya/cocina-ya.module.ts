@@ -5,6 +5,8 @@ import { CategoryPageComponent } from './components/category-page/category-page.
 import { ListRecipesComponent } from './components/list-recipes/list-recipes.component';
 import { CardComponent } from './components/card/card.component';
 import { RouterLink, RouterModule } from '@angular/router';
+import { SearchRecipesComponent } from './components/search-recipes/search-recipes.component';
+import { RecipePageComponent } from './components/recipe-page/recipe-page.component';
 
 
 
@@ -13,7 +15,9 @@ import { RouterLink, RouterModule } from '@angular/router';
     HomePageComponent,
     CategoryPageComponent,
     ListRecipesComponent,
-    CardComponent
+    CardComponent,
+    SearchRecipesComponent,
+    RecipePageComponent
   ],
   imports: [
     RouterModule,
