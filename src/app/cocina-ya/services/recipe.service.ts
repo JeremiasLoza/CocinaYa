@@ -5,11 +5,14 @@ import { map, Observable } from 'rxjs';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
-
+  public recipeList: Recipe[] = [];
+  public recipe: Recipe[] = [];
+  
   constructor(private http : HttpClient) { }
  
   private apiURL = "https://www.themealdb.com/api/json/v1/1/";
@@ -22,6 +25,4 @@ export class RecipeService {
     return this.http.get<{ meals: Recipe[] }>(`${this.apiURL}lookup.php?i=${id}`).pipe(
       map(response => response.meals[0]) )
   }
-
-  
 }
