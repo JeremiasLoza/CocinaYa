@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 
 @Component({
@@ -7,16 +7,14 @@ import { Recipe } from '../../models/recipe';
   styleUrls: ['./recipe-detail-modal.component.css']
 })
 export class RecipeDetailModalComponent {
-  @Input() recipes: Recipe[] = [];
-  @Input() isOpen = true;
+  
+  @Input() recipe!: Recipe; 
+  @Input() index!: number | null; 
+  @Input() recipes!: Recipe[]; 
+  @Output() close = new EventEmitter<void>(); 
 
-  currentIndex = 0;
-
-
-  closeModal() {
-    this.isOpen = false;
+  closeModal(): void {
+    this.close.emit(); 
   }
-
-
 
 }

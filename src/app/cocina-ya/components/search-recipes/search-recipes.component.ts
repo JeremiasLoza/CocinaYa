@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./search-recipes.component.css']
 })
 export class SearchRecipesComponent {
-  constructor(private RecipeService: RecipeService, private route: ActivatedRoute) { }
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
 
   public searchText: string = '';
 
@@ -18,8 +18,5 @@ export class SearchRecipesComponent {
     });
   }
 
-  get recipe() {
-    return this.RecipeService.recipeList;
-  }
 
 }
