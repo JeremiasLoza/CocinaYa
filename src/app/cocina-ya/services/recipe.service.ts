@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 
 
@@ -14,12 +14,13 @@ export class RecipeService {
  
   private apiURL = "https://www.themealdb.com/api/json/v1/1/";
 
-  getbyFirstLetter():Observable <any>{
-    return this.http.get<any>(this.apiURL + "search.php?f=c ");
-  }
-
   get1Ramdom(): Observable <any> {
     return this.http.get<any>(this.apiURL+"random.php");
+  }
+
+  getById(id : string) : Observable<Recipe> {
+    return this.http.get<{ meals: Recipe[] }>(`${this.apiURL}lookup.php?i=${id}`).pipe(
+      map(response => response.meals[0]) )
   }
 
   

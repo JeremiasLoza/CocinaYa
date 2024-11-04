@@ -1,9 +1,9 @@
 <div class="filter-ingredients mt-3">
-  
-    <div>      
-      <div class="ingredient-list">
-        <label *ngFor="let ingredient of ingredientList | slice:0:20" class="mx-2">
-          <input type="checkbox" name="{{ingredient.strIngredient}}Checkbox" [(ngModel)]="ingredient.selected">
-          {{ ingredient.strIngredient }}
-        </label>
+
+  <div>
+    <label *ngFor="let ingredient of ingredientList | slice:0:500" class="mx-2">
+      <input type="checkbox" name="{{ingredient.strIngredient}}Checkbox" [(ngModel)]="ingredient.selected" (change)="onIngredientChange()">
+      {{ ingredient.strIngredient }}
+    </label>
   </div>
+</div>
