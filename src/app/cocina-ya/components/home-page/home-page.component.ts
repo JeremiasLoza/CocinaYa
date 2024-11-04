@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
+import { RecipeListService } from '../../services/recipe-list.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,7 +12,7 @@ export class HomePageComponent implements OnInit {
 
   recipeList: Recipe[] = [];
 
-  constructor(private service: RecipeService) {}
+  constructor(private service: RecipeService, private recipesList : RecipeListService) {}
 
   ngOnInit(): void {
     this.getRecipesRamdom(20);
@@ -39,5 +40,6 @@ export class HomePageComponent implements OnInit {
     };
 
     fetchRecipes(); 
+    this.recipesList.setRecipes(this.recipeList);
   }
 }
