@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-search-recipes',
   templateUrl: './search-recipes.component.html',
-  styles: ['./search-recipe.component.css']
+  styleUrls: ['./search-recipes.component.css']
 })
 export class SearchRecipesComponent {
   constructor(private RecipeService: RecipeService, private route: ActivatedRoute) { }
