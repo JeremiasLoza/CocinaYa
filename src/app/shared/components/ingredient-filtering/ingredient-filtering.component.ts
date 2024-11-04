@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IngredientService } from '../../../cocina-ya/services/ingredient.service';
 import { Ingredient } from '../../../cocina-ya/models/ingredient';
 import { Observer } from 'rxjs';
+import { Recipe } from '../../../cocina-ya/models/recipe';
+import { RecipeListService } from '../../../cocina-ya/services/recipe-list.service';
 
 
 @Component({
@@ -11,9 +13,9 @@ import { Observer } from 'rxjs';
 })
 export class IngredientFilteringComponent implements OnInit {
   ingredientList: Ingredient[] = [];
-  searchTerm: string = '';
 
-  constructor(private ingredientService: IngredientService) { }
+  constructor(private ingredientService: IngredientService, private recipesListService: RecipeListService) { }
+
 
 
   ngOnInit(): void {
@@ -35,5 +37,13 @@ export class IngredientFilteringComponent implements OnInit {
 
     this.ingredientService.getAllIngredients().subscribe(observer);
   }
+
+  onIngredientChange():void{
+    const selectedIngredients = this.ingredientList.filter(ingredient => ingredient.selected).map(ingredient => ingredient.strIngredient);
+    this.recipesListService.setSelectedIngredients(selectedIngredients);
+    }
+
+
+
 
 }
