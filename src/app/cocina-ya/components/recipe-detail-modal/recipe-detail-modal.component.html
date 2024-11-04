@@ -1,8 +1,18 @@
-<div class="modal-backdrop" *ngIf="isOpen">
-    <div class="modal-content">
-        <button class="close-button" (click)="closeModal()">&times;</button>
-        <div class="modal-body">
-            
+<div class="modal fade show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0, 0, 0, 0.9);">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ recipe.strMeal }}</h5>
+                <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Contenido del modal -->
+            </div>
+
         </div>
     </div>
 </div>
+
+

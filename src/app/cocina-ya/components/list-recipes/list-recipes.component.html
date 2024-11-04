@@ -1,8 +1,19 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let recipe of filteredRecipes">
-            <app-card [recipe]="recipe"></app-card>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let recipe of filteredRecipes; let i = index">
+            <app-card [recipe]="recipe" (click)="openRecipeDetail(recipe,i)"></app-card>
         </div>
     </div>
 </div>
+
+<ng-container *ngIf="selectedRecipe">
+    <app-recipe-detail-modal
+    [recipe]="selectedRecipe"
+    [index]="selectedIndex"
+    [recipes]="filteredRecipes"
+    (close)="closeModal()"
+    >
+
+    </app-recipe-detail-modal>
+</ng-container>

@@ -2,7 +2,6 @@ import { Component, Input, OnInit, } from '@angular/core';
 import { RecipeListService } from '../../services/recipe-list.service';
 import { Recipe } from '../../models/recipe';
 import { combineLatest } from 'rxjs';
-import { SelectorContext } from '@angular/compiler';
 
 @Component({
   selector: 'app-list-recipes',
@@ -11,6 +10,8 @@ import { SelectorContext } from '@angular/compiler';
 })
 export class ListRecipesComponent implements OnInit {
   filteredRecipes: Recipe[] = [];
+  selectedRecipe : Recipe | null = null;
+  selectedIndex : number | null = null;
 
   constructor(public recipesListService: RecipeListService) { }
 
@@ -57,6 +58,16 @@ export class ListRecipesComponent implements OnInit {
       recipe.strIngredient19, recipe.strIngredient20
     ].filter(ingredient => ingredient !== "");
 
+  }
+
+  openRecipeDetail(recipe:Recipe,index:number):void{
+    this.selectedRecipe = recipe;
+    this.selectedIndex = index;
+  }
+
+  closeModal():void{
+    this.selectedRecipe = null;
+    this.selectedIndex = null;
   }
 
 }
