@@ -29,10 +29,6 @@ export class NavigationBarComponent implements OnInit{
 
   }
 
-  onSelectCategory(category : string){
-    this.categoryService.getRecipeByCategory(category);
-    
-  }
 
 
 }

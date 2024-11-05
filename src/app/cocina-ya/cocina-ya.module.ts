@@ -5,6 +5,8 @@ import { CategoryPageComponent } from './components/category-page/category-page.
 import { ListRecipesComponent } from './components/list-recipes/list-recipes.component';
 import { CardComponent } from './components/card/card.component';
 import { RouterLink, RouterModule } from '@angular/router';
+import { SearchRecipesComponent } from './components/search-recipes/search-recipes.component';
+import { RecipeDetailModalComponent } from './components/recipe-detail-modal/recipe-detail-modal.component';
 
 
 
@@ -13,7 +15,9 @@ import { RouterLink, RouterModule } from '@angular/router';
     HomePageComponent,
     CategoryPageComponent,
     ListRecipesComponent,
-    CardComponent
+    CardComponent,
+    SearchRecipesComponent,
+    RecipeDetailModalComponent
   ],
   imports: [
     RouterModule,
@@ -23,7 +27,8 @@ import { RouterLink, RouterModule } from '@angular/router';
     HomePageComponent,
     CategoryPageComponent,
     ListRecipesComponent,
-    CardComponent
+    CardComponent,
+    RecipeDetailModalComponent
   ]
 })
 export class CocinaYaModule { }
