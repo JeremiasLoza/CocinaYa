@@ -1,4 +1,4 @@
-<div class="modal fade show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0, 0, 0, 0.9);">
+<div class="modal fade show d-block" role="dialog" style="background-color: rgba(0, 0, 0, 0.9);">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,17 +12,21 @@
                     <img src="{{recipe.strMealThumb}}" alt="{{recipe.strMeal}}" class="img-fluid">
                 </div>
                 <div class="ingredients" *ngFor="let ingredient of recipeIngredients ; let i = index">
-                    <img src="https://www.themealdb.com/images/ingredients/{{ingredient}}-Small.png" alt="{{ingredient}}">
-                    
-                    <p>{{ingredient}}, {{getMeasure(recipe,i+1)}}</p> 
+                    <img src="https://www.themealdb.com/images/ingredients/{{ingredient}}-Small.png"
+                        alt="{{ingredient}}">
+
+                    <p>{{ingredient}}, {{getMeasure(recipe,i+1)}}</p>
                 </div>
                 <div class="instructions">
                     <p>{{recipe.strInstructions}}</p>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" (click)="previousRecipe()" [disabled]="index === 0">Previous</button>
+                <button class="btn btn-secondary" (click)="nextRecipe()"
+                    [disabled]="index === recipes.length - 1">Next</button>
+            </div>
 
         </div>
     </div>
 </div>
-
-
