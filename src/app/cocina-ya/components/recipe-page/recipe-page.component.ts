@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, Route } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
-import { Recipe } from '../../models/recipe';
 
 @Component({
   selector: 'app-recipe-page',
@@ -17,15 +16,11 @@ export class RecipePageComponent {
     this.route.paramMap.subscribe(params => {
       let recipeId = params.get('id');
       if (recipeId && !isNaN(Number(recipeId))) {
-        this.RecipeService.searchRecipeById(recipeId);
+        this.RecipeService.getById(recipeId);
       } else {
         this.router.navigateByUrl('/not-found');
       }
     });
-  }
-
-  get recipes() {
-    return this.RecipeService.recipe;
   }
 
 }

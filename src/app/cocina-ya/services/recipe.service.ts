@@ -10,8 +10,6 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RecipeService {
-  public recipeList: Recipe[] = [];
-  public recipe: Recipe[] = [];
   
   constructor(private http : HttpClient) { }
  
