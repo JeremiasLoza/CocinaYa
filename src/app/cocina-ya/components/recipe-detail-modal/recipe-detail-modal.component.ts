@@ -11,7 +11,7 @@ export class RecipeDetailModalComponent implements OnInit{
   
   constructor(public recipeListService : RecipeListService){}
   @Input() recipe!: Recipe; 
-  @Input() index!: number | null; 
+  @Input() index!: number; 
   @Input() recipes!: Recipe[]; 
   @Output() close = new EventEmitter<void>(); 
   recipeIngredients: string[] = []
@@ -28,4 +28,19 @@ export class RecipeDetailModalComponent implements OnInit{
   closeModal(): void {
     this.close.emit(); 
   }
+
+  nextRecipe(): void {
+    if (this.index < this.recipes.length - 1) {
+      this.recipe = this.recipes[this.index + 1];
+      this.index++;
+    }
+  }
+
+  previousRecipe(): void {
+    if (this.index > 0) {
+      this.recipe = this.recipes[this.index - 1];
+      this.index--;
+    }
+  }
+
 }
