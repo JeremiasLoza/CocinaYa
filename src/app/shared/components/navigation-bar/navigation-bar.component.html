@@ -35,8 +35,8 @@
             </ul>
 
             <form class="d-lg-flex mx-auto d-none" style="width:40%">
-                <input class="form-control me-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search" [(ngModel)]="searchText" name="searchText" >
+                <button class="btn btn-outline-secondary" type="submit" routerLink="search/{{searchText}}">Search</button>
             </form>
 
         <div *ngIf="!isLogged">
