@@ -1,0 +1,9 @@
+
+.footer{
+    width: 100%;
+    position: sticky; 
+}
+a{
+    text-decoration: none;
+    color: blue;
+}
