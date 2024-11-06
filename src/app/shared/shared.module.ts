@@ -11,7 +11,7 @@ import {FormsModule} from '@angular/forms'
 @NgModule({
   declarations: [
     NavigationBarComponent,
-    FooterComponent
+    FooterComponent,
     IngredientFilteringComponent
   ],
   imports: [
@@ -21,7 +21,7 @@ import {FormsModule} from '@angular/forms'
   ],
   exports : [
     NavigationBarComponent,
-    FooterComponent
+    FooterComponent,
     IngredientFilteringComponent
   ]
 })
