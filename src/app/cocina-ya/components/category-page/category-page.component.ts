@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Recipe } from '../../models/recipe';
-import { Observer } from 'rxjs';
+import { forkJoin, Observer, switchMap } from 'rxjs';
 import { CategoryService } from '../../services/category.service';
+import { RecipeListService } from '../../services/recipe-list.service';
+import { RecipeService } from '../../services/recipe.service';
+import { Recipe } from '../../models/recipe';
 
 @Component({
   selector: 'app-category-page',
@@ -10,17 +12,16 @@ import { CategoryService } from '../../services/category.service';
   styleUrl: './category-page.component.css'
 })
 export class CategoryPageComponent implements OnInit {
-  constructor(private categoryService: CategoryService, private route: ActivatedRoute) { }
-
-  recipeList: Recipe[] = [];
+  constructor(private categoryService: CategoryService, private route: ActivatedRoute, private recipesListService: RecipeListService,private recipeService : RecipeService) { }
+  
   category: string | null = "";
 
   ngOnInit(): void {
 
     const observer: Observer<any> = {
       next: (data) => {
-        this.recipeList = data.meals || [];
-        console.log(this.recipeList)
+        console.log(data);
+        this.recipesListService.setRecipes(data);
       },
       error: (error) => {
         console.log(error);
@@ -31,13 +32,14 @@ export class CategoryPageComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.category = params.get("category");
       if (this.category) {
-        this.categoryService.getRecipeByCategory(this.category).subscribe(observer);
+        this.categoryService.getRecipeIdsByCategory(this.category).pipe(
+          switchMap(ids =>{
+            const recipeRequests = ids.map(id => this.recipeService.getById(id))
+            return forkJoin(recipeRequests);
+          })
+        ).subscribe(observer);
       }
     })
-
-
-
-
   }
 
 
