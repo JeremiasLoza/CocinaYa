@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { CategoryService } from '../../../cocina-ya/services/category.service';
 import { Category } from '../../../cocina-ya/models/category';
 import { Observer } from 'rxjs';
@@ -10,6 +10,7 @@ import { Observer } from 'rxjs';
 })
 export class NavigationBarComponent implements OnInit{
   isLogged = false;
+  searchText = '';
   
   categories: Category[] = [];
   constructor(private categoryService : CategoryService){}
@@ -28,6 +29,7 @@ export class NavigationBarComponent implements OnInit{
     this.categoryService.getAllCategories().subscribe(observer);
 
   }
+
 
 
 

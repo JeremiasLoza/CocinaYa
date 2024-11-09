@@ -11,7 +11,7 @@ import { combineLatest } from 'rxjs';
 export class ListRecipesComponent implements OnInit {
   filteredRecipes: Recipe[] = [];
   selectedRecipe : Recipe | null = null;
-  selectedIndex : number | null = null;
+  selectedIndex !: number ;
 
   constructor(public recipesListService: RecipeListService) { }
 
@@ -28,26 +28,10 @@ export class ListRecipesComponent implements OnInit {
         selectedIngredients
         ]
       ) => {
-        this.filteredRecipes = this.filterRecipes(recipes, selectedIngredients);
+        this.filteredRecipes = this.recipesListService.filterRecipesByIngredients(recipes, selectedIngredients);
       }
     );
   }
-
-  private filterRecipes(recipes : Recipe[], selectedIngredients : string[]) : Recipe[] {
-    if(selectedIngredients.length === 0){
-      return recipes;
-    }
-
-
-    return recipes.filter(recipe=>
-      selectedIngredients.every(selectedIngredient =>
-        this.recipesListService.getRecipeIngredients(recipe).includes(selectedIngredient)
-      )
-    );
-  }
-
-
-
 
   openRecipeDetail(recipe:Recipe,index:number):void{
     this.selectedRecipe = recipe;
@@ -56,7 +40,7 @@ export class ListRecipesComponent implements OnInit {
 
   closeModal():void{
     this.selectedRecipe = null;
-    this.selectedIndex = null;
+    this.selectedIndex = -1;
   }
 
 }
