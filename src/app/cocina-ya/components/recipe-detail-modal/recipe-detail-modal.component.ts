@@ -15,9 +15,13 @@ export class RecipeDetailModalComponent implements OnInit{
   @Input() recipes!: Recipe[]; 
   @Output() close = new EventEmitter<void>(); 
   recipeIngredients: string[] = []
-  
+
   ngOnInit(): void {
-      this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
+    this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
+  }
+
+  onIngredientClick(ingredientName : string):void{
+    this.closeModal();
   }
 
   getMeasure(recipe: Recipe, index: number): string {
