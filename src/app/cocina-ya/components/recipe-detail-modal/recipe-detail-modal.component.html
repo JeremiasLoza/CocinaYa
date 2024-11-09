@@ -12,9 +12,11 @@
                     <img src="{{recipe.strMealThumb}}" alt="{{recipe.strMeal}}" class="img-fluid">
                 </div>
                 <div class="ingredients" *ngFor="let ingredient of recipeIngredients ; let i = index">
-                    <img src="https://www.themealdb.com/images/ingredients/{{ingredient}}-Small.png">
-
-                    <p>{{ingredient}}, {{getMeasure(recipe,i+1)}}</p>
+                    <app-ingredient-card 
+                    [ingredient]="ingredient" 
+                    [measure]="getMeasure(recipe,i+1)" 
+                    (click)="onIngredientClick(ingredient)"
+                    [routerLink]="['/ingredient/'+ingredient]"></app-ingredient-card>
                 </div>
                 <div class="instructions">
                     <p>{{recipe.strInstructions}}</p>
