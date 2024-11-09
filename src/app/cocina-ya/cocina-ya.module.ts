@@ -8,6 +8,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { SearchRecipesComponent } from './components/search-recipes/search-recipes.component';
 import { RecipeDetailModalComponent } from './components/recipe-detail-modal/recipe-detail-modal.component';
 import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
+import { IngredientPageComponent } from './components/ingredient-page/ingredient-page.component';
 
 
 
@@ -19,7 +20,8 @@ import { IngredientCardComponent } from './components/ingredient-card/ingredient
     CardComponent,
     SearchRecipesComponent,
     RecipeDetailModalComponent,
-    IngredientCardComponent
+    IngredientCardComponent,
+    IngredientPageComponent
   ],
   imports: [
     RouterModule,

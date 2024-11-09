@@ -12,7 +12,11 @@
                     <img src="{{recipe.strMealThumb}}" alt="{{recipe.strMeal}}" class="img-fluid">
                 </div>
                 <div class="ingredients" *ngFor="let ingredient of recipeIngredients ; let i = index">
-                    <app-ingredient-card [ingredient]="ingredient" [measure]="getMeasure(recipe,i+1)"></app-ingredient-card>
+                    <app-ingredient-card 
+                    [ingredient]="ingredient" 
+                    [measure]="getMeasure(recipe,i+1)" 
+                    (click)="onIngredientClick(ingredient)"
+                    [routerLink]="['/ingredient/'+ingredient]"></app-ingredient-card>
                 </div>
                 <div class="instructions">
                     <p>{{recipe.strInstructions}}</p>
