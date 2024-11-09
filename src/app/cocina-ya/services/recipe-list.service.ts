@@ -43,7 +43,7 @@ export class RecipeListService {
       recipe.strIngredient13, recipe.strIngredient14, recipe.strIngredient15,
       recipe.strIngredient16, recipe.strIngredient17, recipe.strIngredient18,
       recipe.strIngredient19, recipe.strIngredient20
-    ].filter(ingredient => ingredient !== "");
+    ].filter(ingredient => ingredient !== "" && ingredient !== null);
 
   }
 }
