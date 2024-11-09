@@ -6,7 +6,7 @@ import { ListRecipesComponent } from './components/list-recipes/list-recipes.com
 import { CardComponent } from './components/card/card.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { SearchRecipesComponent } from './components/search-recipes/search-recipes.component';
-import { RecipePageComponent } from './components/recipe-page/recipe-page.component';
+import { RecipeDetailModalComponent } from './components/recipe-detail-modal/recipe-detail-modal.component';
 
 
 
@@ -17,7 +17,7 @@ import { RecipePageComponent } from './components/recipe-page/recipe-page.compon
     ListRecipesComponent,
     CardComponent,
     SearchRecipesComponent,
-    RecipePageComponent
+    RecipeDetailModalComponent
   ],
   imports: [
     RouterModule,
@@ -27,7 +27,8 @@ import { RecipePageComponent } from './components/recipe-page/recipe-page.compon
     HomePageComponent,
     CategoryPageComponent,
     ListRecipesComponent,
-    CardComponent
+    CardComponent,
+    RecipeDetailModalComponent
   ]
 })
 export class CocinaYaModule { }
