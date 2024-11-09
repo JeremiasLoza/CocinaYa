@@ -28,26 +28,10 @@ export class ListRecipesComponent implements OnInit {
         selectedIngredients
         ]
       ) => {
-        this.filteredRecipes = this.filterRecipesByIngredients(recipes, selectedIngredients);
+        this.filteredRecipes = this.recipesListService.filterRecipesByIngredients(recipes, selectedIngredients);
       }
     );
   }
-
-  private filterRecipesByIngredients(recipes : Recipe[], selectedIngredients : string[]) : Recipe[] {
-    if(selectedIngredients.length === 0){
-      return recipes;
-    }
-
-
-    return recipes.filter(recipe=>
-      selectedIngredients.every(selectedIngredient =>
-        this.recipesListService.getRecipeIngredients(recipe).includes(selectedIngredient)
-      )
-    );
-  }
-
-
-
 
   openRecipeDetail(recipe:Recipe,index:number):void{
     this.selectedRecipe = recipe;

@@ -21,6 +21,19 @@ export class RecipeListService {
     this.selectedIngredientesSubject.next(ingredients);
   }
   
+  filterRecipesByIngredients(recipes : Recipe[], selectedIngredients : string[]) : Recipe[] {
+    if(selectedIngredients.length === 0){
+      return recipes;
+    }
+
+
+    return recipes.filter(recipe=>
+      selectedIngredients.every(selectedIngredient =>
+        this.getRecipeIngredients(recipe).includes(selectedIngredient)
+      )
+    );
+  }
+
   getRecipeIngredients(recipe: Recipe): string[] {
     return [
       recipe.strIngredient1, recipe.strIngredient2, recipe.strIngredient3,
