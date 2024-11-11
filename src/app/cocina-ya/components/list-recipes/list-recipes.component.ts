@@ -28,6 +28,7 @@ export class ListRecipesComponent implements OnInit {
         selectedIngredients
         ]
       ) => {
+        console.log(recipes);
         this.filteredRecipes = this.recipesListService.filterRecipesByIngredients(recipes, selectedIngredients);
       }
     );

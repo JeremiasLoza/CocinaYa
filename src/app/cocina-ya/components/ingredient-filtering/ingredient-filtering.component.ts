@@ -33,9 +33,11 @@ export class IngredientFilteringComponent implements OnInit {
         console.log(error);
       },
       complete: () => { console.log('Ingredient List request completed'); }
+
     }
 
     this.ingredientService.getAllIngredients().subscribe(observer);
+    this.recipesListService.setSelectedIngredients([]);
   }
 
   onIngredientChange():void{
