@@ -9,8 +9,6 @@ import { SearchRecipesComponent } from './components/search-recipes/search-recip
 import { RecipeDetailModalComponent } from './components/recipe-detail-modal/recipe-detail-modal.component';
 import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
 import { IngredientPageComponent } from './components/ingredient-page/ingredient-page.component';
-import { IngredientFilteringComponent } from './components/ingredient-filtering/ingredient-filtering.component';
-import { FormsModule } from '@angular/forms';
 
 
 
@@ -23,13 +21,11 @@ import { FormsModule } from '@angular/forms';
     SearchRecipesComponent,
     RecipeDetailModalComponent,
     IngredientCardComponent,
-    IngredientPageComponent,
-    IngredientFilteringComponent
+    IngredientPageComponent
   ],
   imports: [
     RouterModule,
-    CommonModule,
-    FormsModule
+    CommonModule
   ],
   exports:[
     HomePageComponent,

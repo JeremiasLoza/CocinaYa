@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
+import { IngredientFilteringComponent } from './components/ingredient-filtering/ingredient-filtering.component';
 import {FormsModule} from '@angular/forms'
 
 
@@ -10,17 +11,18 @@ import {FormsModule} from '@angular/forms'
 @NgModule({
   declarations: [
     NavigationBarComponent,
-    FooterComponent
+    FooterComponent,
+    IngredientFilteringComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule
-    
   ],
   exports : [
     NavigationBarComponent,
-    FooterComponent
+    FooterComponent,
+    IngredientFilteringComponent
   ]
 })
 export class SharedModule { }
