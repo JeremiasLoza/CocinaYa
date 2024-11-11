@@ -3,8 +3,6 @@ import { RecipeService } from '../../services/recipe.service';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeListService } from '../../services/recipe-list.service';
 import { Recipe } from '../../models/recipe';
-import { IngredientService } from '../../services/ingredient.service';
-import { Ingredient } from '../../models/ingredient';
 
 @Component({
   selector: 'app-search-recipes',
@@ -12,12 +10,10 @@ import { Ingredient } from '../../models/ingredient';
   styleUrls: ['./search-recipes.component.css']
 })
 export class SearchRecipesComponent {
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute, 
-    private recipeListService : RecipeListService,private ingredientService: IngredientService) { }
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute, private recipeListService : RecipeListService) { }
 
   public searchText: string = '';
   recipeList : Recipe[] = []
-  ingredientList: Ingredient[] = [];
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -37,18 +33,5 @@ export class SearchRecipesComponent {
       this.recipeListService.setRecipes(this.recipeList);
     });
   }
-
-  searchRecipesByIngredient() {
-    this.recipeService.getAllRecipes().subscribe(recipes => {
-      const selectedIngredients = this.ingredientList.filter(ingredient => ingredient.selected).map(ingredient => ingredient.strIngredient);
-
-        this.recipeList = recipes.filter((recipe: Recipe) => 
-        recipe.strMeal.toLowerCase().includes(this.searchText.toLowerCase())
-      );
-      this.recipeListService.setRecipes(this.recipeList);
-    });
-  }
-
-
 
 }

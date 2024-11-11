@@ -18,8 +18,6 @@ export class RecipeDetailModalComponent implements OnInit{
 
   ngOnInit(): void {
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
-    this.justifyInstructions(this.recipe.strInstructions);
-    
   }
 
   onIngredientClick(ingredientName : string):void{
@@ -38,8 +36,6 @@ export class RecipeDetailModalComponent implements OnInit{
   nextRecipe(): void {
     if (this.index < this.recipes.length - 1) {
       this.recipe = this.recipes[this.index + 1];
-      this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
-      this.justifyInstructions(this.recipe.strInstructions);
       this.index++;
     }
   }
@@ -47,16 +43,8 @@ export class RecipeDetailModalComponent implements OnInit{
   previousRecipe(): void {
     if (this.index > 0) {
       this.recipe = this.recipes[this.index - 1];
-      this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
-      this.justifyInstructions(this.recipe.strInstructions);
       this.index--;
     }
   }
 
-  justifyInstructions(instructions:string):void{
-    const instructionsElement = document.querySelector(".instructions p");
-    if(instructionsElement){
-      instructionsElement.innerHTML = instructions.replace(/\.\s/g, ".<br>");
-    }
-  }
 }
