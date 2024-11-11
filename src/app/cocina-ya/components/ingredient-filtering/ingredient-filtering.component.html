@@ -1,0 +1,11 @@
+<div class="row justify-content-center text-center">
+    <label *ngFor="let ingredient of ingredientList | slice:0:20" 
+           class="btn btn-outline-primary m-2 d-flex align-items-center col-lg-1">
+      <input type="checkbox" 
+             name="{{ingredient.strIngredient}}Checkbox" 
+             [(ngModel)]="ingredient.selected" 
+             (change)="onIngredientChange()" 
+             class="me-2">
+      {{ ingredient.strIngredient }}
+    </label>
+</div>

@@ -1,5 +1,5 @@
 <div class="modal fade show d-block" role="dialog" style="background-color: rgba(0, 0, 0, 0.9);">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="max-width: 70vw;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{ recipe.strMeal }}</h5>
@@ -8,18 +8,25 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="recipe-img">
-                    <img src="{{recipe.strMealThumb}}" alt="{{recipe.strMeal}}" class="img-fluid">
+                <div class="recipe-container row">
+                    <!-- Imagen de la receta -->
+                    <div class="recipe-img col">
+                        <img src="{{recipe.strMealThumb}}" alt="{{recipe.strMeal}}" class="img-fluid">
+                    </div>
+                    <!-- Contenedor de ingredientes en grid -->
+                    <div class="ingredients col row">
+                        <div *ngFor="let ingredient of recipeIngredients; let i = index"
+                            class="ingredient-card col-lg-4">
+                            <app-ingredient-card [ingredient]="ingredient" [measure]="getMeasure(recipe,i+1)"
+                                (click)="onIngredientClick(ingredient)" [routerLink]="['/ingredient/'+ingredient]">
+                            </app-ingredient-card>
+                        </div>
+                    </div>
                 </div>
-                <div class="ingredients" *ngFor="let ingredient of recipeIngredients ; let i = index">
-                    <app-ingredient-card 
-                    [ingredient]="ingredient" 
-                    [measure]="getMeasure(recipe,i+1)" 
-                    (click)="onIngredientClick(ingredient)"
-                    [routerLink]="['/ingredient/'+ingredient]"></app-ingredient-card>
-                </div>
-                <div class="instructions">
-                    <p>{{recipe.strInstructions}}</p>
+                <!-- Instrucciones de la receta -->
+                <div class="instructions" >
+                    <h2 style="text-align:center;margin: 10px 0 10px 0;">Instructions</h2>
+                    <p style="text-align: justify;">{{recipe.strInstructions}}</p>
                 </div>
             </div>
             <div class="modal-footer">
@@ -27,7 +34,6 @@
                 <button class="btn btn-secondary" (click)="nextRecipe()"
                     [disabled]="index === recipes.length - 1">Next</button>
             </div>
-
         </div>
     </div>
 </div>
