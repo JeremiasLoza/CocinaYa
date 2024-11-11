@@ -21,4 +21,29 @@ export class RecipeListService {
     this.selectedIngredientesSubject.next(ingredients);
   }
   
+  filterRecipesByIngredients(recipes : Recipe[], selectedIngredients : string[]) : Recipe[] {
+    if(selectedIngredients.length === 0){
+      return recipes;
+    }
+
+
+    return recipes.filter(recipe=>
+      selectedIngredients.every(selectedIngredient =>
+        this.getRecipeIngredients(recipe).includes(selectedIngredient)
+      )
+    );
+  }
+
+  getRecipeIngredients(recipe: Recipe): string[] {
+    return [
+      recipe.strIngredient1, recipe.strIngredient2, recipe.strIngredient3,
+      recipe.strIngredient4, recipe.strIngredient5, recipe.strIngredient6,
+      recipe.strIngredient7, recipe.strIngredient8, recipe.strIngredient9,
+      recipe.strIngredient10, recipe.strIngredient11, recipe.strIngredient12,
+      recipe.strIngredient13, recipe.strIngredient14, recipe.strIngredient15,
+      recipe.strIngredient16, recipe.strIngredient17, recipe.strIngredient18,
+      recipe.strIngredient19, recipe.strIngredient20
+    ].filter(ingredient => ingredient !== "");
+
+  }
 }
