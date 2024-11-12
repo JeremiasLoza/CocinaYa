@@ -14,7 +14,9 @@ export class RecipeDetailModalComponent implements OnInit{
   @Input() index!: number; 
   @Input() recipes!: Recipe[]; 
   @Output() close = new EventEmitter<void>(); 
-  recipeIngredients: string[] = []
+  recipeIngredients: string[] = [];
+  isHeartActive = false;
+  isLogged = true;
 
   ngOnInit(): void {
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
@@ -70,5 +72,8 @@ export class RecipeDetailModalComponent implements OnInit{
     if (target.classList.contains('modal')) { // Verifica si el clic fue en el fondo oscuro
       this.closeModal();
     }
+  }
+  toggleHeart(): void{
+    this.isHeartActive = !this.isHeartActive;
   }
 }
