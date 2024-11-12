@@ -15,19 +15,33 @@ export class RecipeDetailModalComponent implements OnInit{
   @Input() index!: number; 
   @Input() recipes!: Recipe[]; 
   @Output() close = new EventEmitter<void>(); 
-  @Input() isHeartActive !: boolean;
+  isHeartActive !: boolean;
   recipeIngredients: string[] = [];
   isLogged = true;
 
   ngOnInit(): void {
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
     this.justifyInstructions(this.recipe.strInstructions);
+
+    this.favoriteService.favorites$.subscribe((favoriteIds)=>{
+      this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+    })
     
   }
 
   @HostListener('document:keydown.escape', ['$event']) // Cierra con "Esc"
   onEscKeydown(event: KeyboardEvent) {
     this.closeModal();
+  }
+
+  onHeartClick(userId : string , recipeId : string): void{
+    this.isHeartActive = !this.isHeartActive;
+
+    if(this.isHeartActive){
+      this.favoriteService.addFavorite(userId,recipeId).subscribe();
+    }else{
+      this.favoriteService.removeFavorite(userId,recipeId).subscribe();
+    }
   }
 
   onIngredientClick(ingredientName : string):void{
@@ -48,6 +62,9 @@ export class RecipeDetailModalComponent implements OnInit{
       this.recipe = this.recipes[this.index + 1];
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
+      this.favoriteService.favorites$.subscribe((favoriteIds)=>{
+        this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+      })
       this.index++;
     }
   }
@@ -57,6 +74,9 @@ export class RecipeDetailModalComponent implements OnInit{
       this.recipe = this.recipes[this.index - 1];
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
+      this.favoriteService.favorites$.subscribe((favoriteIds)=>{
+        this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+      })
       this.index--;
     }
   }
@@ -72,18 +92,6 @@ export class RecipeDetailModalComponent implements OnInit{
     const target = event.target as HTMLElement;
     if (target.classList.contains('modal')) { // Verifica si el clic fue en el fondo oscuro
       this.closeModal();
-    }
-  }
-  toggleHeart(): void{
-    this.isHeartActive = !this.isHeartActive;
-  }
-
-  onHearthClick(recipeId:string,userId:string):void{
-    this.toggleHeart();
-    if(this.isHeartActive){
-      this.favoriteService.addFavorite(userId,recipeId).subscribe();
-    }else{
-      //Remove favorite
     }
   }
 }
