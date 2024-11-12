@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { RecipeListService } from '../../services/recipe-list.service';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-recipe-detail-modal',
@@ -9,24 +10,38 @@ import { RecipeListService } from '../../services/recipe-list.service';
 })
 export class RecipeDetailModalComponent implements OnInit{
   
-  constructor(public recipeListService : RecipeListService){}
+  constructor(public recipeListService : RecipeListService, private favoriteService : FavoritesService){}
   @Input() recipe!: Recipe; 
   @Input() index!: number; 
   @Input() recipes!: Recipe[]; 
   @Output() close = new EventEmitter<void>(); 
+  isHeartActive !: boolean;
   recipeIngredients: string[] = [];
-  isHeartActive = false;
   isLogged = true;
 
   ngOnInit(): void {
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
     this.justifyInstructions(this.recipe.strInstructions);
+
+    this.favoriteService.favorites$.subscribe((favoriteIds)=>{
+      this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+    })
     
   }
 
   @HostListener('document:keydown.escape', ['$event']) // Cierra con "Esc"
   onEscKeydown(event: KeyboardEvent) {
     this.closeModal();
+  }
+
+  onHeartClick(userId : string , recipeId : string): void{
+    this.isHeartActive = !this.isHeartActive;
+
+    if(this.isHeartActive){
+      this.favoriteService.addFavorite(userId,recipeId).subscribe();
+    }else{
+      this.favoriteService.removeFavorite(userId,recipeId).subscribe();
+    }
   }
 
   onIngredientClick(ingredientName : string):void{
@@ -47,6 +62,9 @@ export class RecipeDetailModalComponent implements OnInit{
       this.recipe = this.recipes[this.index + 1];
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
+      this.favoriteService.favorites$.subscribe((favoriteIds)=>{
+        this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+      })
       this.index++;
     }
   }
@@ -56,6 +74,9 @@ export class RecipeDetailModalComponent implements OnInit{
       this.recipe = this.recipes[this.index - 1];
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
+      this.favoriteService.favorites$.subscribe((favoriteIds)=>{
+        this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+      })
       this.index--;
     }
   }
@@ -72,8 +93,5 @@ export class RecipeDetailModalComponent implements OnInit{
     if (target.classList.contains('modal')) { // Verifica si el clic fue en el fondo oscuro
       this.closeModal();
     }
-  }
-  toggleHeart(): void{
-    this.isHeartActive = !this.isHeartActive;
   }
 }
