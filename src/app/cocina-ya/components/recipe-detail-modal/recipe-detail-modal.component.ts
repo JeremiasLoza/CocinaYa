@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { RecipeListService } from '../../services/recipe-list.service';
 
@@ -20,6 +20,11 @@ export class RecipeDetailModalComponent implements OnInit{
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
     this.justifyInstructions(this.recipe.strInstructions);
     
+  }
+
+  @HostListener('document:keydown.escape', ['$event']) // Cierra con "Esc"
+  onEscKeydown(event: KeyboardEvent) {
+    this.closeModal();
   }
 
   onIngredientClick(ingredientName : string):void{
@@ -57,6 +62,13 @@ export class RecipeDetailModalComponent implements OnInit{
     const instructionsElement = document.querySelector(".instructions p");
     if(instructionsElement){
       instructionsElement.innerHTML = instructions.replace(/\.\s/g, ".<br>");
+    }
+  }
+
+  onBackdropClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (target.classList.contains('modal')) { // Verifica si el clic fue en el fondo oscuro
+      this.closeModal();
     }
   }
 }
