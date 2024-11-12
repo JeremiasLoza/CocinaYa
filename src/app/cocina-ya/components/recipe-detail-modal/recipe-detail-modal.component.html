@@ -30,6 +30,8 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <i *ngIf="isLogged" [class]="isHeartActive ? 'fas fa-heart heart-icon me-auto' : 'far fa-heart heart-icon me-auto'"
+                        (click)="toggleHeart()"></i>
                 <button class="btn btn-secondary" (click)="previousRecipe()" [disabled]="index === 0">Previous</button>
                 <button class="btn btn-secondary" (click)="nextRecipe()"
                     [disabled]="index === recipes.length - 1">Next</button>
