@@ -21,7 +21,12 @@ import { ToastrModule } from 'ngx-toastr';
     SharedModule,
     CocinaYaModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(
+      {
+        positionClass: 'toast-bottom-right', 
+        preventDuplicates: false,
+      }
+    )
   ],
   providers: [
     provideHttpClient()
