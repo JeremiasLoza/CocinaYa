@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { RecipeListService } from '../../services/recipe-list.service';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-recipe-detail-modal',
@@ -9,7 +10,7 @@ import { RecipeListService } from '../../services/recipe-list.service';
 })
 export class RecipeDetailModalComponent implements OnInit{
   
-  constructor(public recipeListService : RecipeListService){}
+  constructor(public recipeListService : RecipeListService, private favoriteService : FavoritesService){}
   @Input() recipe!: Recipe; 
   @Input() index!: number; 
   @Input() recipes!: Recipe[]; 
@@ -75,5 +76,14 @@ export class RecipeDetailModalComponent implements OnInit{
   }
   toggleHeart(): void{
     this.isHeartActive = !this.isHeartActive;
+  }
+
+  onHearthClick(recipeId:string,userId:string):void{
+    this.toggleHeart();
+    if(this.isHeartActive){
+      this.favoriteService.addFavorite(userId,recipeId).subscribe();
+    }else{
+      //Remove favorite
+    }
   }
 }
