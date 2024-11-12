@@ -14,16 +14,9 @@ export class ListRecipesComponent implements OnInit {
   selectedRecipe : Recipe | null = null;
   selectedIndex !: number ;
   favoriteRecipeIds: string[] = [];
-  constructor(public recipesListService: RecipeListService,private favoriteService : FavoritesService) { }
+  constructor(public recipesListService: RecipeListService) { }
 
   ngOnInit(): void {
-
-    this.favoriteService.getFavorites('1'/*USER ID*/).subscribe(response=>{
-      if(response){
-        this.favoriteRecipeIds = response.recipeIds;
-      }
-    })
-
     combineLatest(
       [
         this.recipesListService.recipes$,
@@ -39,10 +32,6 @@ export class ListRecipesComponent implements OnInit {
         this.filteredRecipes = this.recipesListService.filterRecipesByIngredients(recipes, selectedIngredients);
       }
     );
-  }
-
-  isRecipeFavorite(recipeId : string):boolean{
-    return this.favoriteRecipeIds.includes(recipeId);
   }
 
   openRecipeDetail(recipe:Recipe,index:number):void{
