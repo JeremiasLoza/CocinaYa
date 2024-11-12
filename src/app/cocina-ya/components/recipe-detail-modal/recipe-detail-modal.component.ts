@@ -15,8 +15,8 @@ export class RecipeDetailModalComponent implements OnInit{
   @Input() index!: number; 
   @Input() recipes!: Recipe[]; 
   @Output() close = new EventEmitter<void>(); 
+  @Input() isHeartActive !: boolean;
   recipeIngredients: string[] = [];
-  isHeartActive = false;
   isLogged = true;
 
   ngOnInit(): void {
