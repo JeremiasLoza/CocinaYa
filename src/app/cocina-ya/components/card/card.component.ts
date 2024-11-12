@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { BootstrapOptions, Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../../models/recipe';
+import { FavoritesService } from '../../services/favorites.service';
 
 
 @Component({
@@ -8,14 +9,17 @@ import { Recipe } from '../../models/recipe';
   styleUrl: './card.component.css'
 })
 
-export class CardComponent  {
-  isHeartActive = false;
-
+export class CardComponent {
+  isLogged = true;
+  
+  @Input() isHeartActive !: boolean;
   @Input()
    recipe!: Recipe;
 
   toggleHeart(): void{
+    event?.stopPropagation();
     this.isHeartActive = !this.isHeartActive;
   }
+
 
 }
