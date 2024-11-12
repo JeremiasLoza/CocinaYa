@@ -2,6 +2,7 @@ import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@a
 import { Recipe } from '../../models/recipe';
 import { RecipeListService } from '../../services/recipe-list.service';
 import { FavoritesService } from '../../services/favorites.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-recipe-detail-modal',
@@ -10,7 +11,7 @@ import { FavoritesService } from '../../services/favorites.service';
 })
 export class RecipeDetailModalComponent implements OnInit{
   
-  constructor(public recipeListService : RecipeListService, private favoriteService : FavoritesService){}
+  constructor(public recipeListService : RecipeListService, private favoriteService : FavoritesService,private toastr : ToastrService){}
   @Input() recipe!: Recipe; 
   @Input() index!: number; 
   @Input() recipes!: Recipe[]; 
@@ -39,8 +40,10 @@ export class RecipeDetailModalComponent implements OnInit{
 
     if(this.isHeartActive){
       this.favoriteService.addFavorite(userId,recipeId).subscribe();
+      this.toastr.success('Recipe added succesfuly','Favorites');
     }else{
       this.favoriteService.removeFavorite(userId,recipeId).subscribe();
+      this.toastr.info('Recipe deleted succesfuly','Favorites');
     }
   }
 
