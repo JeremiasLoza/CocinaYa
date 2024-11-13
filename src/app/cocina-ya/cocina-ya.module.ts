@@ -11,6 +11,7 @@ import { IngredientCardComponent } from './components/ingredient-card/ingredient
 import { IngredientPageComponent } from './components/ingredient-page/ingredient-page.component';
 import { IngredientFilteringComponent } from './components/ingredient-filtering/ingredient-filtering.component';
 import { FormsModule } from '@angular/forms';
+import { FavoritesPageComponent } from './components/favorites-page/favorites-page.component';
 
 
 
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     RecipeDetailModalComponent,
     IngredientCardComponent,
     IngredientPageComponent,
-    IngredientFilteringComponent
+    IngredientFilteringComponent,
+    FavoritesPageComponent
   ],
   imports: [
     RouterModule,
