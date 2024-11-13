@@ -9,7 +9,7 @@ import { Observer } from 'rxjs';
   styleUrl: './navigation-bar.component.css'
 })
 export class NavigationBarComponent implements OnInit{
-  isLogged = false;
+  isLogged = true;
   searchText = '';
   
   categories: Category[] = [];

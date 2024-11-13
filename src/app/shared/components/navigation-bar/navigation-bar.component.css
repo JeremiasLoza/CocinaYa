@@ -1,0 +1,12 @@
+.heart-icon {
+    font-size: 1.5rem;
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.user-icon{
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
