@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "javier",
+      "lastName": "palavecino",
+      "email": "pala@alan.com",
+      "password": "Pala45220",
+      "confirmPassword": "Pala45220"
+    },
+    {
+      "id": 2,
+      "name": "tadeo",
+      "lastName": "borneo",
+      "email": "tade@borneo.com",
+      "password": "Tade1234"
+    },
+    {
+      "id": 3,
+      "name": "jeremias",
+      "lastName": "Loza",
+      "email": "jerea@loza.com",
+      "password": "Jere1234"
+    }
+  ]
+}
