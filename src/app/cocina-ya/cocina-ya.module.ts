@@ -9,6 +9,8 @@ import { SearchRecipesComponent } from './components/search-recipes/search-recip
 import { RecipeDetailModalComponent } from './components/recipe-detail-modal/recipe-detail-modal.component';
 import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
 import { IngredientPageComponent } from './components/ingredient-page/ingredient-page.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,18 +23,22 @@ import { IngredientPageComponent } from './components/ingredient-page/ingredient
     SearchRecipesComponent,
     RecipeDetailModalComponent,
     IngredientCardComponent,
-    IngredientPageComponent
+    IngredientPageComponent,
+    EditUserComponent
+
   ],
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports:[
     HomePageComponent,
     CategoryPageComponent,
     ListRecipesComponent,
     CardComponent,
-    RecipeDetailModalComponent
+    RecipeDetailModalComponent,
+    EditUserComponent
   ]
 })
 export class CocinaYaModule { }
