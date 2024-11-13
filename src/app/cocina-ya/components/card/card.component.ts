@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { FavoritesService } from '../../services/favorites.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CardComponent implements OnInit{
   @Input()
    recipe!: Recipe;
 
-   constructor(private favoriteService : FavoritesService){}
+   constructor(private favoriteService : FavoritesService, private toastr : ToastrService){}
 
   ngOnInit(): void {
     this.favoriteService.loadFavorites('1');
@@ -30,9 +31,15 @@ export class CardComponent implements OnInit{
     this.isHeartActive = !this.isHeartActive;
 
     if(this.isHeartActive){
-      this.favoriteService.addFavorite(userId,recipeId).subscribe();
+      this.favoriteService.addFavorite(userId,recipeId).subscribe(()=>{
+        this.toastr.success('Recipe added succesfuly', 'Favorites');
+      }
+
+      );
     }else{
-      this.favoriteService.removeFavorite(userId,recipeId).subscribe();
+      this.favoriteService.removeFavorite(userId,recipeId).subscribe(()=>{
+        this.toastr.info('Recipe deleted succesfuly', 'Favorites');
+      });
     }
   }
 
