@@ -3,6 +3,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{ recipe.strMeal }}</h5>
+                <i *ngIf="isLogged" [class]="isHeartActive ? 'fas fa-heart heart-icon me-auto ms-2' : 'far fa-heart heart-icon me-auto ms-2'"
+                        (click)="onHeartClick('1',recipe.idMeal)"></i>
                 <button type="button" class="close ms-auto" (click)="closeModal()" aria-label="Close">
                     <span>&times;</span>
                 </button>
