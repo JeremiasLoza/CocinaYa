@@ -1,0 +1,46 @@
+<h1 class="text-white text-center pt-4">Log in</h1>
+<form
+  [formGroup]="loginForm"
+  class="bg-black text-white align-items-center form custom-center-align text-center mb-4 rounded"
+>
+  <div class="mb-3">
+    <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input
+      formControlName="email"
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="example@gmail.com"
+    />
+    <div
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="email.errors?.['required']">Email is required.</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input
+      formControlName="password"
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+    />
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="password.errors?.['required']">Password is required.</div>
+    </div>
+  </div>
+  <button type="submit" (click)="login()" class="btn btn-dark" [disabled]="!loginForm.valid">Log in</button>
+  <div class="mt-4">
+    <span>Dont have an account? </span
+    ><button type="submit" (click)="redirectToRegister()" class="btn btn-dark">
+      Sing up here
+    </button>
+  </div>
+</form>
