@@ -7,16 +7,20 @@ import { BehaviorSubject, map, mergeMap, Observable, of, switchMap, tap } from '
   providedIn: 'root'
 })
 export class FavoritesService {
-  private favoritesSubject = new BehaviorSubject<string[]>([]);
+  favoritesSubject = new BehaviorSubject<string[]>([]);
   favorites$ = this.favoritesSubject.asObservable();
 
   apiUrl = 'http://localhost:3000/favorites';
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   loadFavorites(userId: string): void {
     this.getFavorites(userId).subscribe((favorites) => {
-      this.favoritesSubject.next(favorites.recipeIds); // Emite los favoritos actuales
+      const newFavorites = favorites.recipeIds;
+      const currentFavorites = this.favoritesSubject.getValue();
+      if (JSON.stringify(newFavorites) !== JSON.stringify(currentFavorites)) {
+        this.favoritesSubject.next(favorites.recipeIds); // Emite los favoritos actuales
+      }
     });
   }
 
@@ -25,14 +29,14 @@ export class FavoritesService {
       map((favorites: any[]) => favorites[0] || null)
     );
   }
-  
+
   addFavorite(userId: string, recipeId: string): Observable<any> {
     return this.getFavorites(userId).pipe(
       switchMap((favorite: any) => {
         if (favorite) { // Si existe, agregar el recipeId
           favorite.recipeIds.push(recipeId);
           return this.http.put(`${this.apiUrl}/${favorite.id}`, favorite).pipe(
-            tap(()=> this.loadFavorites(userId))
+            tap(() => this.loadFavorites(userId))
           );
         } else { // Si no existe, crearlo
           const newFavorite = {
@@ -40,23 +44,23 @@ export class FavoritesService {
             recipeIds: [recipeId]
           };
           return this.http.post(this.apiUrl, newFavorite).pipe(
-            tap(()=> this.loadFavorites(userId))
+            tap(() => this.loadFavorites(userId))
           );
         }
       })
     );
   }
 
-  removeFavorite(userId:string,recipeId:string):Observable<any>{
+  removeFavorite(userId: string, recipeId: string): Observable<any> {
     return this.getFavorites(userId).pipe(
-      switchMap(favorites =>{
-        if(!favorites){
+      switchMap(favorites => {
+        if (!favorites) {
           return of(null);
         }
-        const updatedRecipeIds = favorites.recipeIds.filter((id:string) => id !== recipeId);
+        const updatedRecipeIds = favorites.recipeIds.filter((id: string) => id !== recipeId);
 
-        return this.http.patch(`${this.apiUrl}/${favorites.id}`, {recipeIds : updatedRecipeIds}).pipe(
-          tap(()=> this.loadFavorites(userId))
+        return this.http.patch(`${this.apiUrl}/${favorites.id}`, { recipeIds: updatedRecipeIds }).pipe(
+          tap(() => this.loadFavorites(userId))
         )
       })
     )
