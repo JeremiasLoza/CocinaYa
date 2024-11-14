@@ -1,25 +1,33 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { RecipeListService } from '../../services/recipe-list.service';
+import { FavoritesService } from '../../services/favorites.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-recipe-detail-modal',
   templateUrl: './recipe-detail-modal.component.html',
   styleUrls: ['./recipe-detail-modal.component.css']
 })
-export class RecipeDetailModalComponent implements OnInit{
-  
-  constructor(public recipeListService : RecipeListService){}
-  @Input() recipe!: Recipe; 
-  @Input() index!: number; 
-  @Input() recipes!: Recipe[]; 
-  @Output() close = new EventEmitter<void>(); 
-  recipeIngredients: string[] = []
+export class RecipeDetailModalComponent implements OnInit {
+
+  constructor(public recipeListService: RecipeListService, private favoriteService: FavoritesService, private toastr: ToastrService) { }
+  @Input() recipe!: Recipe;
+  @Input() index!: number;
+  @Input() recipes!: Recipe[];
+  @Output() close = new EventEmitter<void>();
+  isHeartActive !: boolean;
+  recipeIngredients: string[] = [];
+  isLogged = true;
 
   ngOnInit(): void {
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
     this.justifyInstructions(this.recipe.strInstructions);
-    
+
+    this.favoriteService.favorites$.subscribe((favoriteIds) => {
+      this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+    })
+
   }
 
   @HostListener('document:keydown.escape', ['$event']) // Cierra con "Esc"
@@ -27,17 +35,31 @@ export class RecipeDetailModalComponent implements OnInit{
     this.closeModal();
   }
 
-  onIngredientClick(ingredientName : string):void{
+  onHeartClick(userId: string, recipeId: string): void {
+    this.isHeartActive = !this.isHeartActive;
+
+    if (this.isHeartActive) {
+      this.favoriteService.addFavorite(userId, recipeId).subscribe(() => {
+        this.toastr.success('Recipe added succesfuly', 'Favorites');
+      });
+    } else {
+      this.favoriteService.removeFavorite(userId, recipeId).subscribe(()=>{
+        this.toastr.info('Recipe deleted succesfuly', 'Favorites');
+      });
+    }
+  }
+
+  onIngredientClick(ingredientName: string): void {
     this.closeModal();
   }
 
   getMeasure(recipe: Recipe, index: number): string {
     const measureKey = `strMeasure${index}`;
-    return recipe[measureKey as keyof Recipe] || ''; 
+    return recipe[measureKey as keyof Recipe] || '';
   }
 
   closeModal(): void {
-    this.close.emit(); 
+    this.close.emit();
   }
 
   nextRecipe(): void {
@@ -45,6 +67,9 @@ export class RecipeDetailModalComponent implements OnInit{
       this.recipe = this.recipes[this.index + 1];
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
+      this.favoriteService.favorites$.subscribe((favoriteIds) => {
+        this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+      })
       this.index++;
     }
   }
@@ -54,13 +79,16 @@ export class RecipeDetailModalComponent implements OnInit{
       this.recipe = this.recipes[this.index - 1];
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
+      this.favoriteService.favorites$.subscribe((favoriteIds) => {
+        this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+      })
       this.index--;
     }
   }
 
-  justifyInstructions(instructions:string):void{
+  justifyInstructions(instructions: string): void {
     const instructionsElement = document.querySelector(".instructions p");
-    if(instructionsElement){
+    if (instructionsElement) {
       instructionsElement.innerHTML = instructions.replace(/\.\s/g, ".<br>");
     }
   }
