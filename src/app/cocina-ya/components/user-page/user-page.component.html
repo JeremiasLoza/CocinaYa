@@ -1,0 +1,39 @@
+<div class="container mt-4">
+    <h2>Perfil del Usuario</h2>
+  
+    <!-- Mostrar los datos del usuario si están disponibles -->
+    <div *ngIf="user" class="card mt-3 shadow-sm">
+      <div class="card-body ">
+        <h4 class="card-title">Hola! {{ user.name }} {{ user.lastName }}</h4>
+        <p class="card-text"><strong>Name:</strong> {{ user.name }}</p>
+        <p class="card-text"><strong>Lastname:</strong> {{ user.lastName }}</p>
+        <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+        <p class="card-text">
+          <strong>Contraseña:</strong>
+          <span>
+            <input 
+              type="password" 
+              class="form-control d-inline-block w-auto" 
+              [value]="user.password" 
+              readonly
+            />
+          </span>
+        </p>
+      </div>
+      <div class="card-footer ">
+        <!-- Botón de Editar -->
+        <button
+          class="btn btn-primary"
+          [routerLink]="['/edit-user', user.id]"
+        >
+          Editar
+        </button>
+      </div>
+    </div>
+    
+  
+    <!-- Mensaje si no hay usuario cargado -->
+    <div *ngIf="!user" class="alert alert-info mt-3">
+      No hay datos del usuario cargados.
+    </div>
+  </div>

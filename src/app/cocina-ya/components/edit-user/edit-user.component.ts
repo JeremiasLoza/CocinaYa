@@ -28,11 +28,16 @@ export class EditUserComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.auth.login(1);
-   
+    this.auth.login(2);
+   /* 
+    // Obtener el parámetro 'id' de la ruta
+    this.userId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log('Editar usuario con ID:', this.userId);
+    // Aquí puedes cargar los datos del usuario para edición
+   */
 
     const loggedInUserId = +localStorage.getItem('loggedInUserId')!;
-    console.log('antes de entrar al if id : ', loggedInUserId);
+    
     if(loggedInUserId){
       this.userservice.getUserById(loggedInUserId).subscribe((user)=>{
         this.userForm.patchValue({
@@ -84,7 +89,7 @@ export class EditUserComponent implements OnInit{
        this.userservice.editUser(this.userForm.value).subscribe(
         response => {
           console.log('Server response:', response);
-          //this.router.navigate(['/login']);
+          //this.router.navigate(['/login']); aca deveria ir al home 
         },
         error => {
           console.error('Error when sending data:', error);
