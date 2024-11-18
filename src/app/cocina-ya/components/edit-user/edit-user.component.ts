@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder,FormGroup,ValidationErrors,Validators } from '@angular/forms';
 import { AuthServiceService } from '../../services/auth-service.service';
 import { UserService } from '../../services/user.service';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class EditUserComponent implements OnInit{
 
   strongPasswordRegx: RegExp =/^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/;
   
-  constructor(private formBuilder: FormBuilder, private auth : AuthServiceService, private userservice : UserService) {
+  constructor(private formBuilder: FormBuilder, private auth : AuthServiceService, private userservice : UserService, private router : Router) {
     // Ahora `userForm` se inicializa después de que `formBuilder` esté listo
     this.userForm = this.formBuilder.group({
       id: [''],
@@ -28,11 +29,16 @@ export class EditUserComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.auth.login(1);
-   
+    this.auth.login(2);
+   /* 
+    // Obtener el parámetro 'id' de la ruta
+    this.userId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log('Editar usuario con ID:', this.userId);
+    // Aquí puedes cargar los datos del usuario para edición
+   */
 
     const loggedInUserId = +localStorage.getItem('loggedInUserId')!;
-    console.log('antes de entrar al if id : ', loggedInUserId);
+    
     if(loggedInUserId){
       this.userservice.getUserById(loggedInUserId).subscribe((user)=>{
         this.userForm.patchValue({
@@ -84,7 +90,7 @@ export class EditUserComponent implements OnInit{
        this.userservice.editUser(this.userForm.value).subscribe(
         response => {
           console.log('Server response:', response);
-          //this.router.navigate(['/login']);
+          this.router.navigate(['/login']);
         },
         error => {
           console.error('Error when sending data:', error);

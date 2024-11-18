@@ -11,6 +11,7 @@ import { IngredientCardComponent } from './components/ingredient-card/ingredient
 import { IngredientPageComponent } from './components/ingredient-page/ingredient-page.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserPageComponent } from './components/user-page/user-page.component';
 
 
 
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RecipeDetailModalComponent,
     IngredientCardComponent,
     IngredientPageComponent,
-    EditUserComponent
+    EditUserComponent,
+    UserPageComponent
 
   ],
   imports: [

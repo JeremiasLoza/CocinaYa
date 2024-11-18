@@ -4,12 +4,16 @@ import { HomePageComponent } from './cocina-ya/components/home-page/home-page.co
 import { CategoryPageComponent } from './cocina-ya/components/category-page/category-page.component';
 import { SearchRecipesComponent } from './cocina-ya/components/search-recipes/search-recipes.component';
 import { IngredientPageComponent } from './cocina-ya/components/ingredient-page/ingredient-page.component';
+import { UserPageComponent } from './cocina-ya/components/user-page/user-page.component';
+import { EditUserComponent } from './cocina-ya/components/edit-user/edit-user.component';
 
 const routes: Routes = [
 { path: 'home', component: HomePageComponent },
 { path : 'category/:category' , component : CategoryPageComponent},
 { path: 'search/:name', component: SearchRecipesComponent },
 {path:'ingredient/:name', component:IngredientPageComponent},
+{path: 'viewUser', component:UserPageComponent},
+{path :'edit-user/:id', component: EditUserComponent},
 { path: '**' , component: HomePageComponent },
 ];
 
