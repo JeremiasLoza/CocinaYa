@@ -10,10 +10,11 @@
     },
     {
       "id": 2,
-      "name": "tadeo",
+      "name": "Agustin",
       "lastName": "borneo",
       "email": "tade@borneo.com",
-      "password": "Tade1234"
+      "password": "Tade1234",
+      "confirmPassword": "Tade1234"
     },
     {
       "id": 3,

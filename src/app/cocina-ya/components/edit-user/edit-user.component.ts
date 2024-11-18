@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder,FormGroup,ValidationErrors,Validators } from '@angular/forms';
 import { AuthServiceService } from '../../services/auth-service.service';
 import { UserService } from '../../services/user.service';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class EditUserComponent implements OnInit{
 
   strongPasswordRegx: RegExp =/^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/;
   
-  constructor(private formBuilder: FormBuilder, private auth : AuthServiceService, private userservice : UserService) {
+  constructor(private formBuilder: FormBuilder, private auth : AuthServiceService, private userservice : UserService, private router : Router) {
     // Ahora `userForm` se inicializa después de que `formBuilder` esté listo
     this.userForm = this.formBuilder.group({
       id: [''],
@@ -89,7 +90,7 @@ export class EditUserComponent implements OnInit{
        this.userservice.editUser(this.userForm.value).subscribe(
         response => {
           console.log('Server response:', response);
-          //this.router.navigate(['/login']); aca deveria ir al home 
+          this.router.navigate(['/login']);
         },
         error => {
           console.error('Error when sending data:', error);

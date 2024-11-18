@@ -1,39 +1,35 @@
-<div class="container mt-4">
-    <h2>Perfil del Usuario</h2>
-  
-    <!-- Mostrar los datos del usuario si están disponibles -->
-    <div *ngIf="user" class="card mt-3 shadow-sm">
-      <div class="card-body ">
-        <h4 class="card-title">Hola! {{ user.name }} {{ user.lastName }}</h4>
-        <p class="card-text"><strong>Name:</strong> {{ user.name }}</p>
-        <p class="card-text"><strong>Lastname:</strong> {{ user.lastName }}</p>
-        <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
-        <p class="card-text">
-          <strong>Contraseña:</strong>
-          <span>
-            <input 
-              type="password" 
-              class="form-control d-inline-block w-auto" 
-              [value]="user.password" 
-              readonly
-            />
-          </span>
-        </p>
+
+
+<div class="container ">
+    <h3 class="mb-3 text-center">Detalles del Usuario</h3>
+    <div class="p-4 rounded bg-light">
+      <div class="row mb-3">
+        <div class="col-lg-6">
+          <label for="firstName" class="form-label">First Name</label>
+          <div id="firstName" class="form-control bg-white">{{ user.name }}</div>
+        </div>
+        <div class="col-lg-6">
+          <label for="lastName" class="form-label">Last Name</label>
+          <div id="lastName" class="form-control bg-white">{{ user.lastName }}</div>
+        </div>
       </div>
-      <div class="card-footer ">
-        <!-- Botón de Editar -->
-        <button
-          class="btn btn-primary"
-          [routerLink]="['/edit-user', user.id]"
-        >
+  
+      <div class="row mb-3">
+        <div class="col-lg-6">
+          <label for="email" class="form-label">Email</label>
+          <div id="email" class="form-control bg-white">{{ user.email }}</div>
+        </div>
+        <div class="col-lg-6">
+          <label for="password" class="form-label">Password</label>
+          <div id="password" class="form-control bg-white">{{ user.password }}</div>
+        </div>
+      </div>
+      <hr class="mb-4">
+  
+      <div class="text-center">
+        <button class="btn btn-primary mt-3" [routerLink]="['/edit-user', user.id]">
           Editar
         </button>
       </div>
-    </div>
-    
-  
-    <!-- Mensaje si no hay usuario cargado -->
-    <div *ngIf="!user" class="alert alert-info mt-3">
-      No hay datos del usuario cargados.
     </div>
   </div>
