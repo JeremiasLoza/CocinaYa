@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IngredientService } from '../../../cocina-ya/services/ingredient.service';
-import { Ingredient } from '../../../cocina-ya/models/ingredient';
+import { IngredientService } from '../../services/ingredient.service';
+import { Ingredient } from '../../models/ingredient';
 import { Observer } from 'rxjs';
-import { Recipe } from '../../../cocina-ya/models/recipe';
-import { RecipeListService } from '../../../cocina-ya/services/recipe-list.service';
+import { Recipe } from '../../models/recipe';
+import { RecipeListService } from '../../services/recipe-list.service';
 
 
 @Component({
@@ -33,9 +33,11 @@ export class IngredientFilteringComponent implements OnInit {
         console.log(error);
       },
       complete: () => { console.log('Ingredient List request completed'); }
+
     }
 
     this.ingredientService.getAllIngredients().subscribe(observer);
+    this.recipesListService.setSelectedIngredients([]);
   }
 
   onIngredientChange():void{

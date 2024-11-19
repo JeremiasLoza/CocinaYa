@@ -1,28 +1,29 @@
 <!-- Not registered user navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      
+
         <a class="navbar-brand" routerLink="home">Cocina Ya</a>
-      <!-- Responsive button to hide options -->
+        <!-- Responsive button to hide options -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
 
                 <li class="nav-item">
                     <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
                 </li>
-                
+
                 <li class="nav-item">
                     <div class="dropdown">
                         <button class="btn dropdown-toggle nav-link" type="button"
                             data-bs-toggle="dropdown">Categories</button>
                         <ul class="dropdown-menu">
                             <li *ngFor="let category of categories">
-                                <a class="dropdown-item nav-link" routerLink="category/{{category.strCategory}}">{{category.strCategory}}</a>
+                                <a class="dropdown-item nav-link"
+                                    routerLink="category/{{category.strCategory}}">{{category.strCategory}}</a>
                             </li>
                         </ul>
                     </div>
@@ -31,28 +32,35 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="recipes" routerLinkActive="active">About us</a>
                 </li>
-                
+
             </ul>
 
             <form class="d-lg-flex mx-auto d-none" style="width:40%">
-                <input class="form-control me-2" type="search" placeholder="Search" [(ngModel)]="searchText" name="searchText" >
-                <button class="btn btn-outline-secondary" type="submit" routerLink="search/{{searchText}}">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search" [(ngModel)]="searchText"
+                    name="searchText">
+                <button class="btn btn-outline-secondary" type="submit"
+                    routerLink="search/{{searchText}}">Search</button>
             </form>
 
-        <div *ngIf="!isLogged">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link">Sign up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">Login</a>
-                </li>
-            </ul>
-        </div>
+            <div *ngIf="!isLogged">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="register">Sign up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="login">Login</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngIf="isLogged">
+                <i class="fas fa-heart heart-icon" routerLink="favorites"></i>
+                <i class="fa-solid fa-user user-icon"></i>
+            </div>
             <form class="d-lg-none  d-flex">
                 <input class="form-control me-2 " type="search" placeholder="Search">
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
             </form>
         </div>
     </div>
-</nav> 
+</nav>
