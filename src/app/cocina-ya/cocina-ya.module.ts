@@ -12,6 +12,10 @@ import { IngredientPageComponent } from './components/ingredient-page/ingredient
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserPageComponent } from './components/user-page/user-page.component';
+import { FavoritesPageComponent } from './components/favorites-page/favorites-page.component';
+import { IngredientFilteringComponent } from './components/ingredient-filtering/ingredient-filtering.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -27,12 +31,14 @@ import { UserPageComponent } from './components/user-page/user-page.component';
     IngredientPageComponent,
     EditUserComponent,
     UserPageComponent
-
+    FavoritesPageComponent,
+    IngredientFilteringComponent
   ],
   imports: [
     RouterModule,
     CommonModule,
     ReactiveFormsModule
+    FormsModule
   ],
   exports:[
     HomePageComponent,
@@ -41,6 +47,8 @@ import { UserPageComponent } from './components/user-page/user-page.component';
     CardComponent,
     RecipeDetailModalComponent,
     EditUserComponent
+
+    IngredientFilteringComponent
   ]
 })
 export class CocinaYaModule { }
