@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { CocinaYaModule } from './cocina-ya/cocina-ya.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -21,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
     SharedModule,
     CocinaYaModule,
     BrowserAnimationsModule,
+    AuthModule,
     ToastrModule.forRoot(
       {
         positionClass: 'toast-bottom-right', 
