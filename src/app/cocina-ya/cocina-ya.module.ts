@@ -10,6 +10,7 @@ import { RecipeDetailModalComponent } from './components/recipe-detail-modal/rec
 import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
 import { IngredientPageComponent } from './components/ingredient-page/ingredient-page.component';
 import { FavoritesPageComponent } from './components/favorites-page/favorites-page.component';
+import { IngredientFilteringComponent } from './components/ingredient-filtering/ingredient-filtering.component';
 
 
 
@@ -23,7 +24,8 @@ import { FavoritesPageComponent } from './components/favorites-page/favorites-pa
     RecipeDetailModalComponent,
     IngredientCardComponent,
     IngredientPageComponent,
-    FavoritesPageComponent
+    FavoritesPageComponent,
+    IngredientFilteringComponent
   ],
   imports: [
     RouterModule,
