@@ -5,13 +5,18 @@ import { CategoryPageComponent } from './cocina-ya/components/category-page/cate
 import { SearchRecipesComponent } from './cocina-ya/components/search-recipes/search-recipes.component';
 import { IngredientPageComponent } from './cocina-ya/components/ingredient-page/ingredient-page.component';
 import { LoginComponent } from './auth/components/login/login.component';
+import { RegisterComponent } from './auth/components/register/register.component';
+import { DashboardComponent } from './auth/components/dashboard/dashboard.component';
 
 const routes: Routes = [
 { path: 'home', component: HomePageComponent },
 { path : 'category/:category' , component : CategoryPageComponent},
 { path: 'search/:name', component: SearchRecipesComponent },
 {path:'ingredient/:name', component:IngredientPageComponent},
-{path: 'login', component: LoginComponent},
+{ path: 'login', component: LoginComponent},
+{ path: 'register', component: RegisterComponent},
+{ path: 'dashboard', component: DashboardComponent},
+{ path: '', redirectTo: 'home', pathMatch: 'full' },
 { path: '**' , component: HomePageComponent },
 ];
 

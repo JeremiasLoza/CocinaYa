@@ -1,0 +1,57 @@
+{
+    "user": [
+      {
+        "name": "Daniel",
+        "lastName": "Sciacco",
+        "email": "daniels@algo.com",
+        "password": "Dani1234",
+        "id": "FgNFFwV"
+      },
+      {
+        "name": "Jeremias",
+        "lastName": "Loza",
+        "email": "jereloza@gmail.com",
+        "password": "123456Aa",
+        "id": "bAl_DTd"
+      },
+      {
+        "name": "Alan",
+        "lastName": "Palavecino",
+        "email": "alan@a.com",
+        "password": "alan1",
+        "id": "6XZoDXh"
+      },
+      {
+        "name": "Tadeo",
+        "lastName": "Borneo",
+        "email": "t@a.com",
+        "password": "Tadeo2",
+        "id": "67267jo"
+      }
+    ],
+    "favorites": [
+      {
+        "id": "6XZoDXh",
+        "favorites": [
+          "11003",
+          "11002",
+          "11001"
+        ]
+      },
+      {
+        "id": "bAl_DTd",
+        "favorites": [
+          "11000",
+          "11005",
+          "11002",
+          "11007"
+        ]
+      },
+      {
+        "id": "UhlMm6T",
+        "favorites": [
+          "11001"
+        ]
+      }
+    ]
+  }
