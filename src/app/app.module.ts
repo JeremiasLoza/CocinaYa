@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { provideHttpClient } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { CocinaYaModule } from './cocina-ya/cocina-ya.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AuthModule } from './auth/auth.module';
 
 @NgModule({
