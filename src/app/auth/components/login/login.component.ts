@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthLoginService } from '../../../cocina-ya/services/auth.login.service';
 
@@ -9,11 +9,9 @@ import { AuthLoginService } from '../../../cocina-ya/services/auth.login.service
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+ 
   loginError: string = '';
-  loginForm = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
-  });
+  loginForm : FormGroup; // Declarar sin inicializar
   public isLogged: Promise<boolean>;
   public errorMessage: string = '';
 
@@ -22,19 +20,27 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private loginService: AuthLoginService
   ) {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
+
+    // Inicializar isLogged
     this.isLogged = new Promise((resolve) => {
       resolve(false);
     });
   }
 
+
+
   ngOnInit() {}
 
   get email() {
-    return this.loginForm.controls.email;
+    return this.loginForm.controls['email'];
   }
 
   get password() {
-    return this.loginForm.controls.password;
+    return this.loginForm.controls['password'];
   }
 
   login() {
