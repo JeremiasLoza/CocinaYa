@@ -1,0 +1,18 @@
+<div class="bg-black text-white div" *ngIf="user">
+    <div class="container mt-5">
+      <div class="card bg-black mx-auto">
+        <div class="card-header text-white">
+          <h2 class="text-center">Dashboard</h2>
+        </div>
+        <div class="card-body text-white">
+          <h3 class="card-title">Full Name</h3>
+          <p class="card-text">{{ user.name }} {{ user.lastName }}</p>
+  
+          <h3 class="card-title">Email</h3>
+          <p class="card-text">{{ user.email }}</p>
+  
+          <button (click)="logout()" class="btn btn-danger">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -16,6 +16,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRecipesRamdom(20);
+    this.recipesList.setRecipes(this.recipeList);
   }
 
   getRecipesRamdom(cant: number) {
@@ -40,6 +41,5 @@ export class HomePageComponent implements OnInit {
     };
 
     fetchRecipes(); 
-    this.recipesList.setRecipes(this.recipeList);
   }
 }
