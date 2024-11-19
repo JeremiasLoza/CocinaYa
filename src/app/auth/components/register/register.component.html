@@ -1,9 +1,11 @@
-<h1 class="text-white text-center pt-4">Register</h1>
+<h1 class="text-black text-center py-4">Register</h1>
 <form
-    [formGroup
-    ]="userForm" class="bg-black text-white align-items-center form custom-center-align text-center mb-4 rounded"
+  [formGroup]="userForm"
+  class="bg-dark text-white p-4 rounded shadow-lg custom-center-align mb-4"
+  style="max-width: 500px; margin: auto;"
 >
-<div>
+  <!-- Name -->
+  <div class="mb-3">
     <label for="name" class="form-label">Name</label>
     <input
       formControlName="name"
@@ -14,12 +16,18 @@
     />
     <div
       *ngIf="name.invalid && (name.dirty || name.touched)"
-      class="text-danger"
+      class="text-danger small text-start mt-1"
     >
       <div *ngIf="name.errors?.['required']">Name is required.</div>
-      <div *ngIf="name.errors?.['pattern']">Name does not allow numbers or special characters.</div>
+      <div *ngIf="name.errors?.['pattern']">
+        Name does not allow numbers or special characters.
+      </div>
     </div>
-    <label for="lastName" class="form-label">Last name</label>
+  </div>
+
+  <!-- Last Name -->
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Last Name</label>
     <input
       formControlName="lastName"
       type="text"
@@ -29,11 +37,17 @@
     />
     <div
       *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
-      class="text-danger"
+      class="text-danger small text-start mt-1"
     >
       <div *ngIf="lastName.errors?.['required']">Last name is required.</div>
-      <div *ngIf="lastName.errors?.['pattern']">Last name does not allow numbers or special characters.</div>
+      <div *ngIf="lastName.errors?.['pattern']">
+        Last name does not allow numbers or special characters.
+      </div>
     </div>
+  </div>
+
+  <!-- Email -->
+  <div class="mb-3">
     <label for="email" class="form-label">Email</label>
     <input
       formControlName="email"
@@ -43,47 +57,71 @@
       aria-describedby="email"
     />
     <div
-    *ngIf="email.invalid && (email.dirty || email.touched)"
-    class="text-danger"
-  >
-    <div *ngIf="email.errors?.['required']">Email is required.</div>
-    <div *ngIf="email.errors?.['email']">Email must be in email format.</div>
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="text-danger small text-start mt-1"
+    >
+      <div *ngIf="email.errors?.['required']">Email is required.</div>
+      <div *ngIf="email.errors?.['email']">Email must be in a valid format.</div>
+    </div>
   </div>
+
+  <!-- Password -->
+  <div class="mb-3">
     <label for="password" class="form-label">Password</label>
     <input
       formControlName="password"
       type="password"
       class="form-control"
       id="password"
-      aria-describedby="password"
     />
     <div
       *ngIf="password.invalid && (password.dirty || password.touched)"
-      class="text-danger"
+      class="text-danger small text-start mt-1"
     >
       <div *ngIf="password.errors?.['required']">Password is required.</div>
       <div *ngIf="password.errors?.['pattern']">
-        <ul>
+        <ul class="mb-0">
           Password should contain:
           <li>8 characters</li>
           <li>At least one uppercase letter</li>
           <li>At least one lowercase letter</li>
-          <li>At least one number letter</li>
+          <li>At least one number</li>
         </ul>
       </div>
-        
     </div>
-    
-    <div>
-      <label for="confirmPassword">Confirm password</label>
-      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="text-danger" class="form-control">
-      <div *ngIf="confirmPassword?.invalid && (confirmPassword.touched || confirmPassword.dirty)" class="text-danger">
-        <div *ngIf="confirmPassword.errors?.['required'] || confirmPassword.value === ''">Confirm password is required</div>
-        <div *ngIf="userForm.hasError('passwordMismatch') && confirmPassword.value != ''">Passwords dont match</div>
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="mb-3">
+    <label for="confirmPassword" class="form-label">Confirm Password</label>
+    <input
+      formControlName="confirmPassword"
+      type="password"
+      class="form-control"
+      id="confirmPassword"
+    />
+    <div
+      *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+      class="text-danger small text-start mt-1"
+    >
+      <div *ngIf="confirmPassword.errors?.['required'] || confirmPassword.value === ''">
+        Confirm password is required.
+      </div>
+      <div
+        *ngIf="userForm.hasError('passwordMismatch') && confirmPassword.value != ''"
+      >
+        Passwords don't match.
       </div>
     </div>
-    <button type="submit" (click)="validateForm()" class="btn btn-dark mt-3" [disabled]="!userForm.valid">
-        Sing up
-      </button>
-</div>
+  </div>
+
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    (click)="validateForm()"
+    class="btn btn-primary w-100 mt-3"
+    [disabled]="!userForm.valid"
+  >
+    Sign up
+  </button>
 </form>
