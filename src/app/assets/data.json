@@ -28,30 +28,5 @@
         "password": "Tadeo2",
         "id": "67267jo"
       }
-    ],
-    "favorites": [
-      {
-        "id": "6XZoDXh",
-        "favorites": [
-          "11003",
-          "11002",
-          "11001"
-        ]
-      },
-      {
-        "id": "bAl_DTd",
-        "favorites": [
-          "11000",
-          "11005",
-          "11002",
-          "11007"
-        ]
-      },
-      {
-        "id": "UhlMm6T",
-        "favorites": [
-          "11001"
-        ]
-      }
     ]
   }
