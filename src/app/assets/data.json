@@ -28,5 +28,13 @@
         "password": "Tadeo2",
         "id": "67267jo"
       }
-    ]
+    ],
+
+    "favorites": [
+    {
+      "userId": "1",
+      "recipeIds": [],
+      "id": 1
+    }
+  ]
   }
