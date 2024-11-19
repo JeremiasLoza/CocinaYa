@@ -5,6 +5,6 @@
                 <h5 class="card-title">{{recipe.strMeal}}</h5>
 
                 <i [class]="isHeartActive ? 'fas fa-heart heart-icon' : 'far fa-heart heart-icon'"
-                        (click)="toggleHeart()"></i>
+                        (click)="onHeartClick('1',recipe.idMeal)"></i>
         </div>
 </a>

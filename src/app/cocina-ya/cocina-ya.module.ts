@@ -9,6 +9,7 @@ import { SearchRecipesComponent } from './components/search-recipes/search-recip
 import { RecipeDetailModalComponent } from './components/recipe-detail-modal/recipe-detail-modal.component';
 import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
 import { IngredientPageComponent } from './components/ingredient-page/ingredient-page.component';
+import { FavoritesPageComponent } from './components/favorites-page/favorites-page.component';
 import { IngredientFilteringComponent } from './components/ingredient-filtering/ingredient-filtering.component';
 import { FormsModule } from '@angular/forms';
 
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     RecipeDetailModalComponent,
     IngredientCardComponent,
     IngredientPageComponent,
+    FavoritesPageComponent,
     IngredientFilteringComponent
   ],
   imports: [
@@ -36,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     CategoryPageComponent,
     ListRecipesComponent,
     CardComponent,
-    RecipeDetailModalComponent
+    RecipeDetailModalComponent,
+    IngredientFilteringComponent
   ]
 })
 export class CocinaYaModule { }
