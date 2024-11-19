@@ -11,6 +11,7 @@ import { IngredientCardComponent } from './components/ingredient-card/ingredient
 import { IngredientPageComponent } from './components/ingredient-page/ingredient-page.component';
 import { FavoritesPageComponent } from './components/favorites-page/favorites-page.component';
 import { IngredientFilteringComponent } from './components/ingredient-filtering/ingredient-filtering.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -29,14 +30,16 @@ import { IngredientFilteringComponent } from './components/ingredient-filtering/
   ],
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports:[
     HomePageComponent,
     CategoryPageComponent,
     ListRecipesComponent,
     CardComponent,
-    RecipeDetailModalComponent
+    RecipeDetailModalComponent,
+    IngredientFilteringComponent
   ]
 })
 export class CocinaYaModule { }

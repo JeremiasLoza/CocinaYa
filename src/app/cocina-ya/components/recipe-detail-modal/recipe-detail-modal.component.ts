@@ -22,15 +22,12 @@ export class RecipeDetailModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
-<<<<<<< HEAD
-=======
     this.justifyInstructions(this.recipe.strInstructions);
 
     this.favoriteService.favorites$.subscribe((favoriteIds) => {
       this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
     })
 
->>>>>>> stage
   }
 
   @HostListener('document:keydown.escape', ['$event']) // Cierra con "Esc"
@@ -68,14 +65,11 @@ export class RecipeDetailModalComponent implements OnInit {
   nextRecipe(): void {
     if (this.index < this.recipes.length - 1) {
       this.recipe = this.recipes[this.index + 1];
-<<<<<<< HEAD
-=======
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
       this.favoriteService.favorites$.subscribe((favoriteIds) => {
         this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
       })
->>>>>>> stage
       this.index++;
     }
   }
@@ -83,20 +77,15 @@ export class RecipeDetailModalComponent implements OnInit {
   previousRecipe(): void {
     if (this.index > 0) {
       this.recipe = this.recipes[this.index - 1];
-<<<<<<< HEAD
-=======
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
       this.favoriteService.favorites$.subscribe((favoriteIds) => {
         this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
       })
->>>>>>> stage
       this.index--;
     }
   }
 
-<<<<<<< HEAD
-=======
   justifyInstructions(instructions: string): void {
     const instructionsElement = document.querySelector(".instructions p");
     if (instructionsElement) {
@@ -110,5 +99,4 @@ export class RecipeDetailModalComponent implements OnInit {
       this.closeModal();
     }
   }
->>>>>>> stage
 }
