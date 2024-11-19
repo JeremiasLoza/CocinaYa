@@ -1,0 +1,35 @@
+
+
+<div class="container ">
+    <h3 class="mb-3 text-center">Detalles del Usuario</h3>
+    <div class="p-4 rounded bg-light">
+      <div class="row mb-3">
+        <div class="col-lg-6">
+          <label for="firstName" class="form-label">First Name</label>
+          <div id="firstName" class="form-control bg-white">{{ user.name }}</div>
+        </div>
+        <div class="col-lg-6">
+          <label for="lastName" class="form-label">Last Name</label>
+          <div id="lastName" class="form-control bg-white">{{ user.lastName }}</div>
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-lg-6">
+          <label for="email" class="form-label">Email</label>
+          <div id="email" class="form-control bg-white">{{ user.email }}</div>
+        </div>
+        <div class="col-lg-6">
+          <label for="password" class="form-label">Password</label>
+          <div id="password" class="form-control bg-white">{{ user.password }}</div>
+        </div>
+      </div>
+      <hr class="mb-4">
+  
+      <div class="text-center">
+        <button class="btn btn-primary mt-3" [routerLink]="['/edit-user', user.id]">
+          Editar
+        </button>
+      </div>
+    </div>
+  </div>

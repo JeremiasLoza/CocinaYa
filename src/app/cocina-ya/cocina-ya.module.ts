@@ -9,9 +9,13 @@ import { SearchRecipesComponent } from './components/search-recipes/search-recip
 import { RecipeDetailModalComponent } from './components/recipe-detail-modal/recipe-detail-modal.component';
 import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
 import { IngredientPageComponent } from './components/ingredient-page/ingredient-page.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserPageComponent } from './components/user-page/user-page.component';
 import { FavoritesPageComponent } from './components/favorites-page/favorites-page.component';
 import { IngredientFilteringComponent } from './components/ingredient-filtering/ingredient-filtering.component';
 import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -25,12 +29,15 @@ import { FormsModule } from '@angular/forms';
     RecipeDetailModalComponent,
     IngredientCardComponent,
     IngredientPageComponent,
+    EditUserComponent,
+    UserPageComponent
     FavoritesPageComponent,
     IngredientFilteringComponent
   ],
   imports: [
     RouterModule,
     CommonModule,
+    ReactiveFormsModule
     FormsModule
   ],
   exports:[
@@ -39,6 +46,8 @@ import { FormsModule } from '@angular/forms';
     ListRecipesComponent,
     CardComponent,
     RecipeDetailModalComponent,
+    EditUserComponent
+
     IngredientFilteringComponent
   ]
 })
