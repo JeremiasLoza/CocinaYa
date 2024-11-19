@@ -2,9 +2,7 @@
   "favorites": [
     {
       "userId": "1",
-      "recipeIds": [
-        
-      ],
+      "recipeIds": [],
       "id": 1
     }
   ]

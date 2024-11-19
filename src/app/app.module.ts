@@ -9,6 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthModule } from './auth/auth.module';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +21,14 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     SharedModule,
     CocinaYaModule,
-    AuthModule
+    BrowserAnimationsModule,
+    AuthModule,
+    ToastrModule.forRoot(
+      {
+        positionClass: 'toast-bottom-right', 
+        preventDuplicates: false,
+      }
+    )
   ],
   providers: [
     provideHttpClient()
