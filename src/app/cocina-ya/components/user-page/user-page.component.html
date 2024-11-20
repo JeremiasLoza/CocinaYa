@@ -21,10 +21,13 @@
     <!-- Divider -->
     <hr class="mb-4">
     <!-- Edit Button -->
-    <div class="text-center">
+    <div class="d-flex justify-content-between align-items-center">
       <button class="btn btn-primary btn-lg px-4" [routerLink]="['/edit-user', user.id]">
         Edit
-      </button>
+      </button>      
+      <button class="btn btn-danger ms-auto" (click)="logout()">Log out</button>
     </div>
+    
+
   </div>
 </div>

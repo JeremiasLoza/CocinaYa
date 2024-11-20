@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder,FormGroup,ValidationErrors,Validators } fr
 import { Route, Router } from '@angular/router';
 import { AuthLoginService } from '../../services/auth.login.service';
 import { User } from '../../models/user';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class EditUserComponent implements OnInit{
 
   strongPasswordRegx: RegExp =/^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/;
   
-  constructor(private formBuilder: FormBuilder, private userservice : AuthLoginService, private router : Router) {
+  constructor(private formBuilder: FormBuilder, private userservice : AuthLoginService, private router : Router, private toastr : ToastrService) {
     // Ahora `userForm` se inicializa después de que `formBuilder` esté listo
     this.userForm = this.formBuilder.group({
       id: [''],
@@ -97,7 +98,7 @@ export class EditUserComponent implements OnInit{
        this.userservice.editUser(user).subscribe(
         response => {
           console.log('Server response:', response);
-          
+          this.toastr.success('User modified succesfully','Edit');
           this.router.navigate(['/home']);
         },
         error => {
@@ -108,5 +109,7 @@ export class EditUserComponent implements OnInit{
       this.userForm.markAllAsTouched();
     }
   }
+
+
 }
 

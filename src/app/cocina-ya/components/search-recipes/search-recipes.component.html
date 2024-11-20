@@ -1,2 +1,8 @@
-<app-ingredient-filtering></app-ingredient-filtering>
-<app-list-recipes></app-list-recipes>
+<div *ngIf="haveRecipes">
+    <app-ingredient-filtering></app-ingredient-filtering>
+    <app-list-recipes></app-list-recipes>
+</div>
+
+<div *ngIf="!haveRecipes">
+    <p class="text-center mt-4">Recipe not found</p>
+</div>

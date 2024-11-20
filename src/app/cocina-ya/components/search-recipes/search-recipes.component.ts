@@ -13,23 +13,31 @@ export class SearchRecipesComponent {
   constructor(private recipeService: RecipeService, private route: ActivatedRoute, private recipeListService : RecipeListService) { }
 
   public searchText: string = '';
-  recipeList : Recipe[] = []
+  recipeList : Recipe[] = [];
+  haveRecipes = true;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.searchText = params['name'];
       this.searchRecipes();
+      
     });
   }
 
 
   searchRecipes() {
-    this.recipeService.getAllRecipes().subscribe(recipes => {
+    this.recipeService.getAllRecipes().subscribe((recipes) => {
       // Filtra las recetas que incluyen el `searchText` en el nombre
         this.recipeList = recipes.filter((recipe: Recipe) => 
-        recipe.strMeal.toLowerCase().includes(this.searchText.toLowerCase())
+        recipe.strMeal.toLowerCase().includes((this.searchText)?this.searchText.toLowerCase():'')
       );
       // Pasa la lista filtrada al servicio `recipeListService` para que se muestre en el list-recipes component
+      if(this.recipeList.length < 1){
+        this.haveRecipes = false;
+      }else
+      {
+        this.haveRecipes = true;
+      }
       this.recipeListService.setRecipes(this.recipeList);
     });
   }

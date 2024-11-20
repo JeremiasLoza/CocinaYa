@@ -34,6 +34,13 @@
       "email": "tuser@test.com",
       "password": "!Test1234",
       "id": "KNjDFmH"
+    },
+    {
+      "name": "prueba",
+      "lastName": "test",
+      "email": "ptest@gmail.com",
+      "password": "Ptest12@",
+      "id": "PU5rcDg"
     }
   ],
   "favorites": [
@@ -71,6 +78,11 @@
       "userId": "KNjDFmH",
       "recipeIds": [],
       "id": 7
+    },
+    {
+      "userId": "PU5rcDg",
+      "recipeIds": [],
+      "id": 8
     }
   ]
 }
