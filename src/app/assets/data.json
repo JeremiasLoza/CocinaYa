@@ -1,7 +1,7 @@
 {
   "user": [
     {
-      "name": "Daniel",
+      "name": "jorge",
       "lastName": "Sciacco",
       "email": "daniels@algo.com",
       "password": "Dani1234",
@@ -27,22 +27,6 @@
       "email": "t@a.com",
       "password": "Tadeo2",
       "id": "67267jo"
-    },
-    {
-      "name": "juan",
-      "lastName": "azar",
-      "email": "jazar@gmail.com",
-      "password": "Juan123@",
-      "confirmPassword": "Juan123@",
-      "id": "R3tCCqV"
-    },
-    {
-      "name": "prueba",
-      "lastName": "uno",
-      "email": "pruebauno@gmail.com",
-      "password": "Prueba1@",
-      "confirmPassword": "Prueba1@",
-      "id": "GU_HhQv"
     }
   ],
   "favorites": [

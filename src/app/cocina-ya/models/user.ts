@@ -1,7 +1,4 @@
-export interface Users {
-    user: User[];
-    favorites: Favorite[];
-  }
+
   
   export interface User {
     id: string;
@@ -11,7 +8,3 @@ export interface Users {
     password: string;
   }
   
-  export interface Favorite {
-    id: string;
-    favorites: string[];
-  }
