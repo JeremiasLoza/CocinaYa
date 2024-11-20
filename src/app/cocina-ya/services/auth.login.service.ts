@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginRequest } from '../models/login-request';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import {
   Observable,
   catchError,
@@ -16,16 +16,19 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class AuthLoginService {
+apiUrl = "http://localhost:3000/user"
+
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
   currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({
-    id: 0,
+    id: '',
     email: '',
     name: '',
     lastName: '',
     password: '',
   });
+
   private user: User | null | undefined = null;
   constructor(private http: HttpClient) {}
   login(credentials: LoginRequest): Observable<User> {
@@ -89,9 +92,11 @@ export class AuthLoginService {
     }
     return isLogin;
   }
+
   public searchById(id: string | null): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseURL}/user?id=${id}`);
   }
+
   public hasLoged(): boolean {
     if (localStorage.getItem('token')) {
       return true;
@@ -102,4 +107,14 @@ export class AuthLoginService {
   public isLoggedIn(): Observable<boolean> {
     return this.currentUserLoginOn.asObservable();
   }
+
+  editUser(user : User): Observable<any>{
+    console.log(user);
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    })
+    return this.http.put(`${this.apiUrl}/${user.id}`, user, {headers})
+  }
+
 }
+

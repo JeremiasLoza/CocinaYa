@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { AuthLoginService } from '../../services/auth.login.service';
+import { User } from '../../models/user';
 
 
 @Component({
@@ -9,29 +10,33 @@ import { UserService } from '../../services/user.service';
 })
 
 
-
-
 export class UserPageComponent implements OnInit{
 
- constructor(private userService : UserService ){}
+ constructor(private auth : AuthLoginService){}
 
  user !: User ;
+ userId: number | null = null;
+
 
  ngOnInit(): void {
 
   /// aca deberia obtener el id del usuario logeado 
-   this.viewUserData(1);
+  const token = localStorage.getItem('token') ?? ''; // Obtén el ID de usuario almacenado como token
+  
+  console.log('ID de usuario desde localStorage:', token);
+
+  this.viewUserData(token);
   
  }
 
- viewUserData(id : number ){
-  this.userService.getUserById(id).subscribe((data)=>{
+ viewUserData(id : string ){
+  this.auth.searchById(id).subscribe((data)=>{
     this.user = {
-      id : data.id,
-      name : data.name,
-      lastName : data.lastName,
-      email : data.email,
-      password: data.password
+      id : data[0].id,
+      name : data[0].name,
+      lastName : data[0].lastName,
+      email : data[0].email,
+      password: data[0].password
 
     };
     console.log('Usuario cargado:', this.user); // Para verificar el resultado
@@ -41,11 +46,4 @@ export class UserPageComponent implements OnInit{
 
 }
 
-class User {
-  'id' : number;
-  'name': string;
-  'lastName': string;
-  'email':string 
-  'password': string; 
-}
 

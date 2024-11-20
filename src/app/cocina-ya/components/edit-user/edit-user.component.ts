@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder,FormGroup,ValidationErrors,Validators } from '@angular/forms';
-import { AuthServiceService } from '../../services/auth-service.service';
-import { UserService } from '../../services/user.service';
 import { Route, Router } from '@angular/router';
+import { AuthLoginService } from '../../services/auth.login.service';
+import { User } from '../../models/user';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class EditUserComponent implements OnInit{
 
   strongPasswordRegx: RegExp =/^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/;
   
-  constructor(private formBuilder: FormBuilder, private auth : AuthServiceService, private userservice : UserService, private router : Router) {
+  constructor(private formBuilder: FormBuilder, private userservice : AuthLoginService, private router : Router) {
     // Ahora `userForm` se inicializa después de que `formBuilder` esté listo
     this.userForm = this.formBuilder.group({
       id: [''],
@@ -29,7 +29,7 @@ export class EditUserComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.auth.login(2);
+    //this.auth.login(2);
    /* 
     // Obtener el parámetro 'id' de la ruta
     this.userId = Number(this.route.snapshot.paramMap.get('id'));
@@ -37,16 +37,17 @@ export class EditUserComponent implements OnInit{
     // Aquí puedes cargar los datos del usuario para edición
    */
 
-    const loggedInUserId = +localStorage.getItem('loggedInUserId')!;
+    const token = localStorage.getItem('token') ?? '';
+
     
-    if(loggedInUserId){
-      this.userservice.getUserById(loggedInUserId).subscribe((user)=>{
+    if(token){
+      this.userservice.searchById(token).subscribe((user)=>{
         this.userForm.patchValue({
-          id : user.id,
-          name : user.name,
-          lastName : user.lastName,
-          email: user.email,
-          password : user.password,
+          id : user[0].id,
+          name : user[0].name,
+          lastName : user[0].lastName,
+          email: user[0].email,
+          password : user[0].password,
           confirmPassword : ''
         })
       })
@@ -86,11 +87,18 @@ export class EditUserComponent implements OnInit{
 
   validateForm(){
     if(this.userForm.valid){
-      
-       this.userservice.editUser(this.userForm.value).subscribe(
+      let user = {
+        name : this.userForm.get('name')?.value,
+        lastName : this.userForm.get('lastName')?.value,
+        email: this.userForm.get('email')?.value,
+        password : this.userForm.get('password')?.value,
+        id: localStorage.getItem('token') ?? ''
+      }
+       this.userservice.editUser(user).subscribe(
         response => {
           console.log('Server response:', response);
-          this.router.navigate(['/login']);
+          
+          this.router.navigate(['/home']);
         },
         error => {
           console.error('Error when sending data:', error);
@@ -101,3 +109,4 @@ export class EditUserComponent implements OnInit{
     }
   }
 }
+
