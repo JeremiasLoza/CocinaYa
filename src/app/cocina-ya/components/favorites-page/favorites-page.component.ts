@@ -5,6 +5,7 @@ import { RecipeService } from '../../services/recipe.service';
 import { RecipeListService } from '../../services/recipe-list.service';
 import { forkJoin, switchMap } from 'rxjs';
 import {  Router } from '@angular/router';
+import { useAnimation } from '@angular/animations';
 
 @Component({
   selector: 'app-favorites-page',
@@ -13,11 +14,12 @@ import {  Router } from '@angular/router';
 })
 export class FavoritesPageComponent implements OnInit {
   recipeList: Recipe[] = [];
+  userId = '';
   constructor(private favoriteService: FavoritesService, private recipeService: RecipeService, private recipeListService: RecipeListService, private router : Router) { }
 
   ngOnInit(): void {
-    const userId = '1';  // Hardcodeado para el usuario actual, ajustar si es necesario
-    this.favoriteService.loadFavorites(userId);
+    this.userId = localStorage.getItem('token')??'';
+    this.favoriteService.loadFavorites(this.userId);
     this.getFavorites();
   }
 
@@ -27,6 +29,7 @@ export class FavoritesPageComponent implements OnInit {
         if (favoritesIds.length === 0) {
           // Si no hay favoritos, vacía la lista de recetas
           this.recipeList = [];
+          this.router.navigateByUrl('/home')
           return [];
         }
 

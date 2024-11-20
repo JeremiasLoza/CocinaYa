@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe';
 import { BehaviorSubject, map, mergeMap, Observable, of, switchMap, tap } from 'rxjs';
@@ -28,6 +28,18 @@ export class FavoritesService {
     return this.http.get<any[]>(`${this.apiUrl}?userId=${userId}`).pipe(
       map((favorites: any[]) => favorites[0] || null)
     );
+  }
+
+  addUser(userId : string):Observable<any>{
+    const headerOptions = {
+      headers: new HttpHeaders({
+        'Content-Type' : 'application/json'
+      })
+    }
+    return this.http.post(this.apiUrl,{
+      'userId' : userId,
+      'recipeIds' : [], 
+    },headerOptions);
   }
 
   addFavorite(userId: string, recipeId: string): Observable<any> {

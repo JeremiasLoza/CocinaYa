@@ -1,40 +1,64 @@
 {
-    "user": [
-      {
-        "name": "Daniel",
-        "lastName": "Sciacco",
-        "email": "daniels@algo.com",
-        "password": "Dani1234",
-        "id": "FgNFFwV"
-      },
-      {
-        "name": "Jeremias",
-        "lastName": "Loza",
-        "email": "jereloza@gmail.com",
-        "password": "123456Aa",
-        "id": "bAl_DTd"
-      },
-      {
-        "name": "Alan",
-        "lastName": "Palavecino",
-        "email": "alan@a.com",
-        "password": "alan1",
-        "id": "6XZoDXh"
-      },
-      {
-        "name": "Tadeo",
-        "lastName": "Borneo",
-        "email": "t@a.com",
-        "password": "Tadeo2",
-        "id": "67267jo"
-      }
-    ],
-
-    "favorites": [
+  "user": [
     {
-      "userId": "1",
+      "name": "jorge",
+      "lastName": "Sciacco",
+      "email": "daniels@algo.com",
+      "password": "Dani1234",
+      "id": "FgNFFwV"
+    },
+    {
+      "name": "Jeremias",
+      "lastName": "Loza",
+      "email": "jereloza@gmail.com",
+      "password": "123456Aa",
+      "id": "bAl_DTd"
+    },
+    {
+      "name": "Alan",
+      "lastName": "Palavecino",
+      "email": "alan@a.com",
+      "password": "alan1",
+      "id": "6XZoDXh"
+    },
+    {
+      "name": "Tadeo",
+      "lastName": "Borneo",
+      "email": "t@a.com",
+      "password": "Tadeo2",
+      "id": "67267jo"
+    }
+  ],
+  "favorites": [
+    {
+      "userId": "FgNFFwV",
       "recipeIds": [],
       "id": 1
+    },
+    {
+      "userId": "bAl_DTd",
+      "recipeIds": [],
+      "id": 2
+    },
+    {
+      "userId": "6XZoDXh",
+      "recipeIds": [],
+      "id": 3
+    },
+    {
+      "userId": "67267jo",
+      "recipeIds": [],
+      "id": 4
+    },
+    {
+      "userId": "R3tCCqV",
+      "recipeIds": [],
+      "id": 5
+    },
+    {
+      "userId": "GU_HhQv",
+      "recipeIds": [],
+      "id": 6
     }
   ]
-  }
+}
