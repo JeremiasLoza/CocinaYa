@@ -4,7 +4,7 @@
         <div class="card-body">
                 <h5 class="card-title">{{recipe.strMeal}}</h5>
 
-                <i [class]="isHeartActive ? 'fas fa-heart heart-icon' : 'far fa-heart heart-icon'"
-                        (click)="onHeartClick('1',recipe.idMeal)"></i>
+                <i *ngIf="isLogged" [class]="isHeartActive ? 'fas fa-heart heart-icon' : 'far fa-heart heart-icon'"
+                        (click)="onHeartClick(userId,recipe.idMeal)"></i>
         </div>
 </a>

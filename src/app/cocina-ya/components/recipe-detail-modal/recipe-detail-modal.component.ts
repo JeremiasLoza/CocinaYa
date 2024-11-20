@@ -3,6 +3,7 @@ import { Recipe } from '../../models/recipe';
 import { RecipeListService } from '../../services/recipe-list.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthLoginService } from '../../services/auth.login.service';
 
 @Component({
   selector: 'app-recipe-detail-modal',
@@ -11,22 +12,31 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RecipeDetailModalComponent implements OnInit {
 
-  constructor(public recipeListService: RecipeListService, private favoriteService: FavoritesService, private toastr: ToastrService) { }
+  constructor(public recipeListService: RecipeListService, private favoriteService: FavoritesService, private authService: AuthLoginService, private toastr: ToastrService) { }
   @Input() recipe!: Recipe;
   @Input() index!: number;
   @Input() recipes!: Recipe[];
   @Output() close = new EventEmitter<void>();
   isHeartActive !: boolean;
   recipeIngredients: string[] = [];
-  isLogged = true;
+  isLogged = false;
+  userId : string = '';
 
   ngOnInit(): void {
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
     this.justifyInstructions(this.recipe.strInstructions);
 
-    this.favoriteService.favorites$.subscribe((favoriteIds) => {
-      this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+    this.authService.isLoggedIn().subscribe(response => {
+      this.isLogged = response;
+      if (this.isLogged) {
+        this.userId = localStorage.getItem('token')??''
+        this.favoriteService.favorites$.subscribe((favoriteIds) => {
+          this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
+        })
+      }
+
     })
+
 
   }
 
@@ -43,7 +53,7 @@ export class RecipeDetailModalComponent implements OnInit {
         this.toastr.success('Recipe added succesfuly', 'Favorites');
       });
     } else {
-      this.favoriteService.removeFavorite(userId, recipeId).subscribe(()=>{
+      this.favoriteService.removeFavorite(userId, recipeId).subscribe(() => {
         this.toastr.info('Recipe deleted succesfuly', 'Favorites');
       });
     }

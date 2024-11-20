@@ -4,7 +4,7 @@ export interface Users {
   }
   
   export interface User {
-    id: number;
+    id: string;
     name: string;
     lastName: string;
     email: string;

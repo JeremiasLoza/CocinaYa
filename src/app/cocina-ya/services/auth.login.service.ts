@@ -20,16 +20,19 @@ export class AuthLoginService {
     false
   );
   currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({
-    id: 0,
+    id: '',
     email: '',
     name: '',
     lastName: '',
     password: '',
   });
   private user: User | null | undefined = null;
+  baseURL = 'http://localhost:3000/user';
+
   constructor(private http: HttpClient) {}
+  
   login(credentials: LoginRequest): Observable<User> {
-    return this.http.get<User>('././assets/data.json').pipe(
+    return this.http.get<User>(`${this.baseURL}`).pipe(
       tap((userData: User) => {
         this.currentUserData.next(userData);
       }),
@@ -57,11 +60,10 @@ export class AuthLoginService {
   get userLoginOn(): Observable<Boolean> {
     return this.currentUserLoginOn.asObservable();
   }
-  baseURL = 'http://localhost:3000';
   saveUserData(data: any): Observable<any> {
     // Puedes realizar cualquier procesamiento adicional aquí antes de escribir el JSON
     //console.log(data);
-    const url = `${this.baseURL}/user`;
+    const url = `${this.baseURL}`;
     return this.http.post<boolean>(url, data);
   }
   get currentUser(): User | undefined {
@@ -70,7 +72,7 @@ export class AuthLoginService {
   }
   public getToAuth(email: string, password: string): Observable<User[]> {
     return this.http.get<User[]>(
-      `${this.baseURL}/user?email=${email}&password=${password}`
+      `${this.baseURL}?email=${email}&password=${password}`
     );
   }
   public async checkAuth(email: string, password: string): Promise<boolean> {
@@ -90,7 +92,7 @@ export class AuthLoginService {
     return isLogin;
   }
   public searchById(id: string | null): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseURL}/user?id=${id}`);
+    return this.http.get<User[]>(`${this.baseURL}?id=${id}`);
   }
   public hasLoged(): boolean {
     if (localStorage.getItem('token')) {
