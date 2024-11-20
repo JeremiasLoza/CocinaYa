@@ -27,6 +27,13 @@
       "email": "t@a.com",
       "password": "Tadeo2",
       "id": "67267jo"
+    },
+    {
+      "name": "Testing",
+      "lastName": "User",
+      "email": "tuser@test.com.ar",
+      "password": "!Test1234",
+      "id": "KNjDFmH"
     }
   ],
   "favorites": [
@@ -59,6 +66,18 @@
       "userId": "GU_HhQv",
       "recipeIds": [],
       "id": 6
+    },
+    {
+      "userId": "KNjDFmH",
+      "recipeIds": [
+        "52846",
+        "52945",
+        "52783",
+        "52847",
+        "52860",
+        "52957"
+      ],
+      "id": 7
     }
   ]
 }
