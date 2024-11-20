@@ -30,14 +30,14 @@ import { FormsModule } from '@angular/forms';
     IngredientCardComponent,
     IngredientPageComponent,
     EditUserComponent,
-    UserPageComponent
+    UserPageComponent,
     FavoritesPageComponent,
     IngredientFilteringComponent
   ],
   imports: [
     RouterModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     FormsModule
   ],
   exports:[
@@ -46,7 +46,7 @@ import { FormsModule } from '@angular/forms';
     ListRecipesComponent,
     CardComponent,
     RecipeDetailModalComponent,
-    EditUserComponent
+    EditUserComponent,
 
     IngredientFilteringComponent
   ]
