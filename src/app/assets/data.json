@@ -31,7 +31,7 @@
     {
       "name": "Testing",
       "lastName": "User",
-      "email": "tuser@test.com.ar",
+      "email": "tuser@test.com",
       "password": "!Test1234",
       "id": "KNjDFmH"
     }
@@ -69,14 +69,7 @@
     },
     {
       "userId": "KNjDFmH",
-      "recipeIds": [
-        "52846",
-        "52945",
-        "52783",
-        "52847",
-        "52860",
-        "52957"
-      ],
+      "recipeIds": [],
       "id": 7
     }
   ]
