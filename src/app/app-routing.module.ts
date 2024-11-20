@@ -24,8 +24,8 @@ const routes: Routes = [
 { path: 'register', component: RegisterComponent},
 { path: 'dashboard', component: DashboardComponent},
 {path:'favorites', component:FavoritesPageComponent},
-{ path: '', redirectTo: 'home', pathMatch: 'full' },
 {path: 'profile', component: UserPageComponent},
+{ path: '', redirectTo: 'home', pathMatch: 'full' },
 { path: '**' , component: HomePageComponent },
 ];
 

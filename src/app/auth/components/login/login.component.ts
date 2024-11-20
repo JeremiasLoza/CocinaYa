@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthLoginService } from '../../../cocina-ya/services/auth.login.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'auth-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private loginService: AuthLoginService
+    private loginService: AuthLoginService,
+    private toastr : ToastrService
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit {
       this.isLogged = this.loginService.checkAuth(this.loginForm.value.email!, this.loginForm.value.password!);
       this.isLogged.then((loggedIn) => {
         if (loggedIn) {
+          this.toastr.success('User logged succesfully','Login')
           this.router.navigate(['/home']);
         }
         else{
