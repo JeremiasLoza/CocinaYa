@@ -1,0 +1,9 @@
+<div class="card my-3">
+  <div class="card-body">
+    <p class="card-text">{{ comment.text }}</p>
+    <footer class="blockquote-footer">
+      <strong>{{ comment.userId }}</strong> - 
+      <small>{{ comment.date | date: 'short' }}</small>
+    </footer>
+  </div>
+</div>
