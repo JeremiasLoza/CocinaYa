@@ -15,6 +15,7 @@ import { useAnimation } from '@angular/animations';
 export class FavoritesPageComponent implements OnInit {
   recipeList: Recipe[] = [];
   userId = '';
+  haveFavorites = true;
   constructor(private favoriteService: FavoritesService, private recipeService: RecipeService, private recipeListService: RecipeListService, private router : Router) { }
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class FavoritesPageComponent implements OnInit {
         if (favoritesIds.length === 0) {
           // Si no hay favoritos, vacía la lista de recetas
           this.recipeList = [];
-          this.router.navigateByUrl('/home')
+          this.haveFavorites = false;
           return [];
         }
 
