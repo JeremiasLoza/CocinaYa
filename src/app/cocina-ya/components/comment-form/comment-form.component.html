@@ -1,0 +1,22 @@
+<div class="card my-3">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #commentForm="ngForm">
+        <div class="form-group">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="commentText" 
+            name="commentText" 
+            [(ngModel)]="commentText" 
+            placeholder="Write your comment..." 
+            required>
+        </div>
+        <button 
+          type="submit" 
+          class="btn btn-primary mt-2" 
+          [disabled]="!commentForm.form.valid">
+          Send
+        </button>
+      </form>
+    </div>
+  </div>
