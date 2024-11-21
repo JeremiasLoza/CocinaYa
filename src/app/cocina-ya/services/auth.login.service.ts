@@ -64,8 +64,6 @@ apiUrl = "http://localhost:3000/user"
     return this.currentUserLoginOn.asObservable();
   }
   saveUserData(data: any): Observable<any> {
-    // Puedes realizar cualquier procesamiento adicional aquí antes de escribir el JSON
-    //console.log(data);
     const url = `${this.baseURL}`;
     return this.http.post<boolean>(url, data);
   }
@@ -111,7 +109,6 @@ apiUrl = "http://localhost:3000/user"
   }
 
   editUser(user : User): Observable<any>{
-    console.log(user);
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json'
     })
