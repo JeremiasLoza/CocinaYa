@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { RecipeListService } from '../../services/recipe-list.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +13,7 @@ export class HomePageComponent implements OnInit {
 
   recipeList: Recipe[] = [];
 
-  constructor(private service: RecipeService, private recipesList : RecipeListService) {}
+  constructor(private service: RecipeService, private recipesList: RecipeListService) { }
 
   ngOnInit(): void {
     this.getRecipesRamdom(20);
@@ -21,17 +22,16 @@ export class HomePageComponent implements OnInit {
 
   getRecipesRamdom(cant: number) {
     const uniquesRecipe = new Set<string>();
-
     const fetchRecipes = () => {
       this.service.get1Ramdom().subscribe(
         (response) => {
           const recipe = response.meals[0];
           if (!uniquesRecipe.has(recipe.idMeal)) {
-            uniquesRecipe.add(recipe.idMeal); 
+            uniquesRecipe.add(recipe.idMeal);
             this.recipeList.push(recipe);
           }
           if (this.recipeList.length < cant) {
-            fetchRecipes(); 
+            fetchRecipes();
           }
         },
         (error) => {
@@ -39,7 +39,6 @@ export class HomePageComponent implements OnInit {
         }
       );
     };
-
-    fetchRecipes(); 
+    fetchRecipes();
   }
 }

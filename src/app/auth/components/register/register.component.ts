@@ -3,6 +3,7 @@ import { FormBuilder, Validators, AbstractControl, ValidationErrors, FormGroup }
 import { Router } from '@angular/router';
 import { AuthLoginService } from '../../../cocina-ya/services/auth.login.service';
 import { FavoritesService } from '../../../cocina-ya/services/favorites.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'auth-register',
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private loginService: AuthLoginService, 
     private router: Router,
-    private favoritesService : FavoritesService
+    private favoritesService : FavoritesService,
+    private toastr : ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -76,7 +78,7 @@ export class RegisterComponent implements OnInit {
       }
       this.loginService.saveUserData(user).subscribe(
         response => {
-          console.log('Server response:', response);
+          this.toastr.success('User registered succesfully','Register')
           this.favoritesService.addUser(response.id).subscribe();
           this.router.navigate(['/login']);
         },

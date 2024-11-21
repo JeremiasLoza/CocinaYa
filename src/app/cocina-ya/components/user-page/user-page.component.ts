@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthLoginService } from '../../services/auth.login.service';
 import { User } from '../../models/user';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,7 +14,7 @@ import { User } from '../../models/user';
 
 export class UserPageComponent implements OnInit{
 
- constructor(private auth : AuthLoginService){}
+ constructor(private auth : AuthLoginService,private router : Router){}
 
  user !: User ;
  userId: number | null = null;
@@ -43,6 +45,11 @@ export class UserPageComponent implements OnInit{
   }
 
  )}
+
+ logout() {
+  this.auth.logout();
+  this.router.navigate(['/home']);
+}
 
 }
 

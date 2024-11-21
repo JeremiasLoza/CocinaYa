@@ -1,1 +1,6 @@
-<app-list-recipes></app-list-recipes>
+<div *ngIf="haveFavorites">
+    <app-list-recipes></app-list-recipes>
+</div>
+<div *ngIf="!haveFavorites">
+    <p class="text-center mt-4">No favorites available</p>
+</div>
