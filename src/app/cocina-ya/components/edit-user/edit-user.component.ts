@@ -30,17 +30,8 @@ export class EditUserComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    //this.auth.login(2);
-   /* 
-    // Obtener el parámetro 'id' de la ruta
-    this.userId = Number(this.route.snapshot.paramMap.get('id'));
-    console.log('Editar usuario con ID:', this.userId);
-    // Aquí puedes cargar los datos del usuario para edición
-   */
-
     const token = localStorage.getItem('token') ?? '';
 
-    
     if(token){
       this.userservice.searchById(token).subscribe((user)=>{
         this.userForm.patchValue({
@@ -97,7 +88,6 @@ export class EditUserComponent implements OnInit{
       }
        this.userservice.editUser(user).subscribe(
         response => {
-          console.log('Server response:', response);
           this.toastr.success('User modified succesfully','Edit');
           this.router.navigate(['/home']);
         },
