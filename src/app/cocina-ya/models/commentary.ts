@@ -1,5 +1,8 @@
-import { Comment } from "./comment";
+
 export interface Commentary {
+    id : string;
     recipeId: string;
-    commentaries : Comment[];
+    userId: string;
+    text: string;
+    date : Date;
 }

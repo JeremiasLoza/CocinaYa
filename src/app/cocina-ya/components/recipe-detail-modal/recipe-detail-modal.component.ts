@@ -4,6 +4,7 @@ import { RecipeListService } from '../../services/recipe-list.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthLoginService } from '../../services/auth.login.service';
+import { CommentService } from '../../services/comment.service';
 
 @Component({
   selector: 'app-recipe-detail-modal',
@@ -12,20 +13,31 @@ import { AuthLoginService } from '../../services/auth.login.service';
 })
 export class RecipeDetailModalComponent implements OnInit {
 
-  constructor(public recipeListService: RecipeListService, private favoriteService: FavoritesService, private authService: AuthLoginService, private toastr: ToastrService) { }
+  
   @Input() recipe!: Recipe;
   @Input() index!: number;
   @Input() recipes!: Recipe[];
   @Output() close = new EventEmitter<void>();
+
+
   isHeartActive !: boolean;
   recipeIngredients: string[] = [];
   isLogged = false;
   userId : string = '';
+  comments: any [] = []
+  comentaryId : string = '';
+
+  constructor(
+    public recipeListService: RecipeListService,
+    private favoriteService: FavoritesService,
+    private authService: AuthLoginService,
+    private toastr: ToastrService,
+    private commentService : CommentService) { }
 
   ngOnInit(): void {
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
     this.justifyInstructions(this.recipe.strInstructions);
-
+    
     this.authService.isLoggedIn().subscribe(response => {
       this.isLogged = response;
       if (this.isLogged) {
@@ -37,7 +49,20 @@ export class RecipeDetailModalComponent implements OnInit {
 
     })
 
+    this.getComments(this.recipe.idMeal);
 
+    this.commentService.comment$.subscribe(response=>{
+      this.getComments(this.recipe.idMeal);
+    });
+
+  }
+
+
+  getComments(recipeId : string){
+    this.commentService.getCommentByRecipeId(recipeId).subscribe(data=>{
+      this.comments = data;
+      
+    })
   }
 
   @HostListener('document:keydown.escape', ['$event']) // Cierra con "Esc"
@@ -77,6 +102,7 @@ export class RecipeDetailModalComponent implements OnInit {
       this.recipe = this.recipes[this.index + 1];
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
+      this.getComments(this.recipe.idMeal);
       this.favoriteService.favorites$.subscribe((favoriteIds) => {
         this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
       })
@@ -89,6 +115,7 @@ export class RecipeDetailModalComponent implements OnInit {
       this.recipe = this.recipes[this.index - 1];
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
+      this.getComments(this.recipe.idMeal);
       this.favoriteService.favorites$.subscribe((favoriteIds) => {
         this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
       })
