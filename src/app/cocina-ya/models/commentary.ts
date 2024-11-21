@@ -4,5 +4,5 @@ export interface Commentary {
     recipeId: string;
     userId: string;
     text: string;
-    date : Date;
+    date : string;
 }

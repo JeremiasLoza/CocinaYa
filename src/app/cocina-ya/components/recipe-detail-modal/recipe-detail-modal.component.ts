@@ -5,6 +5,7 @@ import { FavoritesService } from '../../services/favorites.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthLoginService } from '../../services/auth.login.service';
 import { CommentService } from '../../services/comment.service';
+import { Commentary } from '../../models/commentary';
 
 @Component({
   selector: 'app-recipe-detail-modal',
@@ -60,6 +61,19 @@ export class RecipeDetailModalComponent implements OnInit {
     })
   }
 
+  handleCommentAdded(newComment: { text: string, userId: string }): void {
+    const commentToAdd: Commentary = {
+      id: '',  // Aquí quizás querrías generar un id único si no lo estás obteniendo desde el servidor
+      recipeId: this.recipe.idMeal,
+      text: newComment.text,
+      userId: newComment.userId,
+      date: new Date().toISOString()  // Fecha actual
+    };
+  
+    this.commentService.addComment(commentToAdd).subscribe(() => {
+      this.comments.push(commentToAdd);  // Agregar el nuevo comentario a la lista
+    });
+  }
 
 
   @HostListener('document:keydown.escape', ['$event']) // Cierra con "Esc"
