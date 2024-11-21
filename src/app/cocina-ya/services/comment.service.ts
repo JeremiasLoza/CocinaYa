@@ -8,9 +8,6 @@ import { Commentary } from '../models/commentary';
 })
 export class CommentService {
 
-  commentSubject = new BehaviorSubject<string[]>([]);
-  comment$ = this.commentSubject.asObservable();
-
   constructor(private http : HttpClient) { }
 
   private apiUrl = 'http://localhost:3000/commentary';
@@ -20,13 +17,10 @@ export class CommentService {
   }
 
   deleteComment(Id: string): Observable<any> {
-    this.commentSubject.next(['']);
     return this.http.delete(`${this.apiUrl}/${Id}`);
   }
 
   addComment(comment: Commentary): Observable<any> {
     return this.http.post<Comment>(`${this.apiUrl}`, comment);
   }
-
-  
 }

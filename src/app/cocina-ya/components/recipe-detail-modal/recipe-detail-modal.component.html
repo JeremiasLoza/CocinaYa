@@ -37,9 +37,9 @@
                         <app-comment-form [userId]="userId" (commentAdded)="handleCommentAdded($event)"></app-comment-form>
                      </div>
                     <div *ngFor="let comment of comments" class="comment-card">
-                      <app-comment-card [comment]="comment" ></app-comment-card>
+                      <app-comment-card [comment]="comment" (commentDeleted)="handleCommentDeleted($event)"></app-comment-card>
                     </div>
-                  </div>
+                </div>
             </div>
             
             <div class="modal-footer">

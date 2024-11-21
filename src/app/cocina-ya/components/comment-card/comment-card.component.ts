@@ -32,9 +32,9 @@ export class CommentCardComponent implements OnInit {
 
   
   deleteComment(): void {
+    this.commentDeleted.emit(this.comment.id);
     this.commentService.deleteComment(this.comment.id).subscribe(data=>
       console.log('ELIMINADO',data)
-
     );
   }
 }

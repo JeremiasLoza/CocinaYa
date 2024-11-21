@@ -21,11 +21,7 @@ export class UserPageComponent implements OnInit{
 
 
  ngOnInit(): void {
-
-  /// aca deberia obtener el id del usuario logeado 
-  const token = localStorage.getItem('token') ?? ''; // Obtén el ID de usuario almacenado como token
-  
-  console.log('ID de usuario desde localStorage:', token);
+  const token = localStorage.getItem('token') ?? ''; 
 
   this.viewUserData(token);
   

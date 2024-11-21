@@ -1,10 +1,10 @@
 <div *ngIf="user" class="card my-3">
   <div class="card-body">
     <p class="card-text">{{ comment.text }}</p>
-    <footer class="blockquote-footer">
+    <div class="blockquote-footer">
       <strong>{{ user.name }} {{user.lastName}}</strong> - 
       <small>{{ comment.date | date: 'short' }}</small>
-    </footer>
+    </div>
   </div>
-  <button  *ngIf="comment.userId === userId"  class="btn btn-danger mt-2" (click)="deleteComment()">Eliminar Comentario</button>
+  <button *ngIf="comment.userId === userId"  class="btn btn-danger mt-2" (click)="deleteComment()">Delete comment</button>
 </div>

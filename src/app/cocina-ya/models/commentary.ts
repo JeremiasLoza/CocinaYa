@@ -1,6 +1,6 @@
 
 export interface Commentary {
-    id : string;
+    id?: string;
     recipeId: string;
     userId: string;
     text: string;
