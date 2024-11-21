@@ -6,6 +6,5 @@
       <small>{{ comment.date | date: 'short' }}</small>
     </footer>
   </div>
-  <button   class="btn btn-danger mt-2" (click)="deleteComment()">Eliminar Comentario</button>
+  <button  *ngIf="comment.userId === userId"  class="btn btn-danger mt-2" (click)="deleteComment()">Eliminar Comentario</button>
 </div>
-<!-- *ngIf="comment.userId === userId" -->
