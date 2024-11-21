@@ -38,7 +38,7 @@ export class RecipeDetailModalComponent implements OnInit {
   ngOnInit(): void {
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
     this.justifyInstructions(this.recipe.strInstructions);
-
+    
     this.authService.isLoggedIn().subscribe(response => {
       this.isLogged = response;
       if (this.isLogged) {
@@ -52,12 +52,17 @@ export class RecipeDetailModalComponent implements OnInit {
 
     this.getComments(this.recipe.idMeal);
 
+    this.commentService.comment$.subscribe(response=>{
+      this.getComments(this.recipe.idMeal);
+    });
+
   }
 
 
   getComments(recipeId : string){
     this.commentService.getCommentByRecipeId(recipeId).subscribe(data=>{
       this.comments = data;
+      
     })
   }
 
@@ -113,6 +118,7 @@ export class RecipeDetailModalComponent implements OnInit {
       this.recipe = this.recipes[this.index + 1];
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
+      this.getComments(this.recipe.idMeal);
       this.favoriteService.favorites$.subscribe((favoriteIds) => {
         this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
       })
@@ -125,6 +131,7 @@ export class RecipeDetailModalComponent implements OnInit {
       this.recipe = this.recipes[this.index - 1];
       this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
       this.justifyInstructions(this.recipe.strInstructions);
+      this.getComments(this.recipe.idMeal);
       this.favoriteService.favorites$.subscribe((favoriteIds) => {
         this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
       })
