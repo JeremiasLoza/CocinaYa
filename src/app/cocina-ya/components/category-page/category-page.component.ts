@@ -20,7 +20,6 @@ export class CategoryPageComponent implements OnInit {
 
     const observer: Observer<any> = {
       next: (data) => {
-        console.log(data);
         this.recipesListService.setRecipes(data);
       },
       error: (error) => {
