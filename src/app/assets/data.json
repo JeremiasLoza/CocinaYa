@@ -85,15 +85,13 @@
       "id": 8
     }
   ],
-  "commentary":[
+  "commentary": [
     {
-      "recipeId" : "52771",
-      "commentaries" : [
-        {"userId" :  "6XZoDXh", "text"  : "gooooooood", "date": "2024-11-19T12:50:00Z" },
-        {"userId" :  "6XZoDXh", "text"  : "good", "date": "2024-11-19T12:43:00Z" },
-        {"userId" :  "6XZoDXh", "text"  : "ricod", "date": "2024-11-19T12:55:55Z" }
-      ]
-       
+      "id": "H55sd",
+      "recipeId": "52771",
+      "userId": "6XZoDXh",
+      "text": "good",
+      "date": "2024-11-19T12:43:00Z"
     }
   ]
 }

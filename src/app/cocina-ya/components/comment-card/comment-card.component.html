@@ -2,8 +2,10 @@
   <div class="card-body">
     <p class="card-text">{{ comment.text }}</p>
     <footer class="blockquote-footer">
-      <strong>{{ comment.userId }}</strong> - 
+      <strong>{{ user.name }} {{user.lastName}}</strong> - 
       <small>{{ comment.date | date: 'short' }}</small>
     </footer>
   </div>
+  <button   class="btn btn-danger mt-2" (click)="deleteComment()">Eliminar Comentario</button>
 </div>
+<!-- *ngIf="comment.userId === userId" -->

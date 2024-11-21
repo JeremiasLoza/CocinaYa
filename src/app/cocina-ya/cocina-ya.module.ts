@@ -16,7 +16,6 @@ import { FavoritesPageComponent } from './components/favorites-page/favorites-pa
 import { IngredientFilteringComponent } from './components/ingredient-filtering/ingredient-filtering.component';
 import { FormsModule } from '@angular/forms';
 import { CommentCardComponent } from './components/comment-card/comment-card.component';
-import { ListCommentComponent } from './components/list-comment/list-comment.component';
 
 
 
@@ -36,7 +35,7 @@ import { ListCommentComponent } from './components/list-comment/list-comment.com
     FavoritesPageComponent,
     IngredientFilteringComponent,
     CommentCardComponent,
-    ListCommentComponent
+  
   ],
   imports: [
     RouterModule,
@@ -53,7 +52,7 @@ import { ListCommentComponent } from './components/list-comment/list-comment.com
     EditUserComponent,
     IngredientFilteringComponent,
     CommentCardComponent,
-    ListCommentComponent
+    
   ]
 })
 export class CocinaYaModule { }
