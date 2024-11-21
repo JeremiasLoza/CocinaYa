@@ -17,6 +17,7 @@ const routes: Routes = [
 { path : 'category/:category' , component : CategoryPageComponent},
 { path: 'search/:name', component: SearchRecipesComponent },
 {path:'search',component:SearchRecipesComponent},
+{path:'recipes',component:SearchRecipesComponent},
 {path:'ingredient/:name', component:IngredientPageComponent},
 {path: 'viewUser', component:UserPageComponent},
 {path :'edit-user/:id', component: EditUserComponent},

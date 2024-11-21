@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
+
+  commentSubject = new BehaviorSubject<string[]>([]);
+  comment$ = this.commentSubject.asObservable();
 
   constructor(private http : HttpClient) { }
 
@@ -16,6 +19,7 @@ export class CommentService {
   }
 
   deleteComment(Id: string): Observable<any> {
+    this.commentSubject.next(['']);
     return this.http.delete(`${this.apiUrl}/${Id}`);
   }
 
