@@ -30,6 +30,9 @@
                     <h2 style="text-align:center;margin: 10px 0 10px 0;">Instructions</h2>
                     <p style="text-align: justify;">{{recipe.strInstructions}}</p>
                 </div>
+                <div *ngIf="isLogged">
+                   
+                </div>
                 <div class="comments-section">
                     <h3 class="text-center">Comments</h3>
                     <div *ngFor="let comment of comments" class="comment-card">
