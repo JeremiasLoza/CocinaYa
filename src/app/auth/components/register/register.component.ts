@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl, ValidationErrors, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthLoginService } from '../../../cocina-ya/services/auth.login.service';
+import { FavoritesService } from '../../../cocina-ya/services/favorites.service';
 
 @Component({
   selector: 'auth-register',
@@ -18,7 +19,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder, 
     private loginService: AuthLoginService, 
-    private router: Router
+    private router: Router,
+    private favoritesService : FavoritesService
   ) {}
 
   ngOnInit(): void {
@@ -75,6 +77,7 @@ export class RegisterComponent implements OnInit {
       this.loginService.saveUserData(user).subscribe(
         response => {
           console.log('Server response:', response);
+          this.favoritesService.addUser(response.id).subscribe();
           this.router.navigate(['/login']);
         },
         error => {

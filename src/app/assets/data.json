@@ -31,9 +31,34 @@
   ],
   "favorites": [
     {
-      "userId": "1",
+      "userId": "FgNFFwV",
       "recipeIds": [],
       "id": 1
+    },
+    {
+      "userId": "bAl_DTd",
+      "recipeIds": [],
+      "id": 2
+    },
+    {
+      "userId": "6XZoDXh",
+      "recipeIds": [],
+      "id": 3
+    },
+    {
+      "userId": "67267jo",
+      "recipeIds": [],
+      "id": 4
+    },
+    {
+      "userId": "R3tCCqV",
+      "recipeIds": [],
+      "id": 5
+    },
+    {
+      "userId": "GU_HhQv",
+      "recipeIds": [],
+      "id": 6
     }
   ]
 }
