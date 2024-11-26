@@ -48,6 +48,13 @@
       "email": "pala@alan.com",
       "password": "Pala1234",
       "id": "J40e66X"
+    },
+    {
+      "name": "prueba",
+      "lastName": "dos",
+      "email": "pala@alan.com",
+      "password": "Puno123@",
+      "id": "pVU5D_E"
     }
   ],
   "favorites": [
@@ -63,7 +70,9 @@
     },
     {
       "userId": "6XZoDXh",
-      "recipeIds": [],
+      "recipeIds": [
+        "52897"
+      ],
       "id": 3
     },
     {
@@ -95,6 +104,13 @@
       "userId": "J40e66X",
       "recipeIds": [],
       "id": 9
+    },
+    {
+      "userId": "pVU5D_E",
+      "recipeIds": [
+        "52897"
+      ],
+      "id": 10
     }
   ],
   "commentary": [
@@ -104,20 +120,6 @@
       "userId": "6XZoDXh",
       "text": "good",
       "date": "2024-11-19T12:43:00Z"
-    },
-    {
-      "id": "00gP-zq",
-      "recipeId": "52771",
-      "text": "la verdad re rico",
-      "userId": "6XZoDXh",
-      "date": "2024-11-21T02:45:16.466Z"
-    },
-    {
-      "id": "77SZE-s",
-      "recipeId": "52771",
-      "text": "una re comidaaaaaa",
-      "userId": "6XZoDXh",
-      "date": "2024-11-21T02:45:54.149Z"
     },
     {
       "id": "STYMYFn",
@@ -139,6 +141,34 @@
       "text": "comida de los diosessss",
       "userId": "67267jo",
       "date": "2024-11-21T02:55:23.120Z"
+    },
+    {
+      "id": "084h4ktnj",
+      "recipeId": "52771",
+      "text": "HOLA",
+      "userId": "6XZoDXh",
+      "date": "2024-11-21T14:03:23.525Z"
+    },
+    {
+      "id": "ildp9dk2d",
+      "recipeId": "52771",
+      "text": "prueba",
+      "userId": "pVU5D_E",
+      "date": "2024-11-21T23:38:19.698Z"
+    },
+    {
+      "id": "6hop39u97",
+      "recipeId": "52771",
+      "text": "d",
+      "userId": "pVU5D_E",
+      "date": "2024-11-21T23:38:22.229Z"
+    },
+    {
+      "id": "0z6emgl86",
+      "recipeId": "52992",
+      "text": "da",
+      "userId": "pVU5D_E",
+      "date": "2024-11-21T23:38:46.007Z"
     }
   ]
 }
