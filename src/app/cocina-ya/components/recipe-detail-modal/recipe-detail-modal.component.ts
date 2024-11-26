@@ -51,24 +51,19 @@ export class RecipeDetailModalComponent implements OnInit {
     })
 
     this.getComments(this.recipe.idMeal);
-
-    this.commentService.comment$.subscribe(response=>{
-      this.getComments(this.recipe.idMeal);
-    });
-
   }
 
 
   getComments(recipeId : string){
     this.commentService.getCommentByRecipeId(recipeId).subscribe(data=>{
-      this.comments = data;
+      this.comments = data.reverse();
       
     })
   }
 
   handleCommentAdded(newComment: { text: string, userId: string }): void {
     const commentToAdd: Commentary = {
-      id: '',  // Aquí quizás querrías generar un id único si no lo estás obteniendo desde el servidor
+      id: Math.random().toString(36).substr(2, 9),
       recipeId: this.recipe.idMeal,
       text: newComment.text,
       userId: newComment.userId,
@@ -76,10 +71,13 @@ export class RecipeDetailModalComponent implements OnInit {
     };
   
     this.commentService.addComment(commentToAdd).subscribe(() => {
-      this.comments.push(commentToAdd);  // Agregar el nuevo comentario a la lista
+      this.comments.unshift(commentToAdd);  // Agregar el nuevo comentario a la lista
     });
   }
 
+  handleCommentDeleted(commentId: string) {
+    this.comments = this.comments.filter(comment => comment.id !== commentId);
+  }
 
   @HostListener('document:keydown.escape', ['$event']) // Cierra con "Esc"
   onEscKeydown(event: KeyboardEvent) {

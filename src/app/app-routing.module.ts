@@ -23,7 +23,6 @@ const routes: Routes = [
 {path :'edit-user/:id', component: EditUserComponent},
 { path: 'login', component: LoginComponent},
 { path: 'register', component: RegisterComponent},
-{ path: 'dashboard', component: DashboardComponent},
 {path:'favorites', component:FavoritesPageComponent},
 {path: 'profile', component: UserPageComponent},
 { path: '', redirectTo: 'home', pathMatch: 'full' },
