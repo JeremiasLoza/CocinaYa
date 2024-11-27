@@ -1,10 +1,39 @@
 <div *ngIf="user" class="card my-3">
   <div class="card-body">
     <p class="card-text">{{ comment.text }}</p>
-    <div class="blockquote-footer">
-      <strong>{{ user.name }} {{user.lastName}}</strong> - 
+    <img class="card-img-thumbnail img-thumbnail-small" src={{comment.imageUrl}} (click)="openModal(comment.imageUrl)">
+    <div class="blockquote-footer mt-1">
+      <strong>{{ user.name }} {{user.lastName}}</strong> -
       <small>{{ comment.date | date: 'short' }}</small>
     </div>
   </div>
-  <button *ngIf="comment.userId === userId"  class="btn btn-danger mt-2" (click)="deleteComment()">Delete comment</button>
+  <button *ngIf="comment.userId === userId" class="btn btn-danger mt-2" (click)="deleteComment()">Delete
+    comment</button>
+</div>
+
+<div
+  class="modal fade"
+  id="imageModal"
+  tabindex="-1"
+  aria-labelledby="imageModalLabel"
+  aria-hidden="true"
+  (click)="$event.stopPropagation()"
+  style="background-color:  rgb(0, 0, 0);"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-center">
+        <img [src]="selectedImage" class="img-fluid" alt="Preview Image" />
+      </div>
+    </div>
+  </div>
 </div>
