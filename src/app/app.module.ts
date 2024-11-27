@@ -8,10 +8,6 @@ import { CocinaYaModule } from './cocina-ya/cocina-ya.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthModule } from './auth/auth.module';
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent
@@ -25,7 +21,7 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     ToastrModule.forRoot(
       {
-        positionClass: 'toast-bottom-right', 
+        positionClass: 'toast-bottom-right',
         preventDuplicates: false,
       }
     )
