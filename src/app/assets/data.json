@@ -77,7 +77,9 @@
     },
     {
       "userId": "67267jo",
-      "recipeIds": [],
+      "recipeIds": [
+        "52771"
+      ],
       "id": 4
     },
     {
@@ -129,13 +131,6 @@
       "date": "2024-11-21T02:49:05.124Z"
     },
     {
-      "id": "OMKKw2x",
-      "recipeId": "52771",
-      "text": "la verda esta comida no es de mi agradado. No se si soy mal cocinaero o tengo las ollas re quemadas",
-      "userId": "67267jo",
-      "date": "2024-11-21T02:54:46.180Z"
-    },
-    {
       "id": "UZGXwQ7",
       "recipeId": "53013",
       "text": "comida de los diosessss",
@@ -143,32 +138,12 @@
       "date": "2024-11-21T02:55:23.120Z"
     },
     {
-      "id": "084h4ktnj",
+      "id": "jeeh3htvn",
       "recipeId": "52771",
-      "text": "HOLA",
-      "userId": "6XZoDXh",
-      "date": "2024-11-21T14:03:23.525Z"
-    },
-    {
-      "id": "ildp9dk2d",
-      "recipeId": "52771",
-      "text": "prueba",
-      "userId": "pVU5D_E",
-      "date": "2024-11-21T23:38:19.698Z"
-    },
-    {
-      "id": "6hop39u97",
-      "recipeId": "52771",
-      "text": "d",
-      "userId": "pVU5D_E",
-      "date": "2024-11-21T23:38:22.229Z"
-    },
-    {
-      "id": "0z6emgl86",
-      "recipeId": "52992",
-      "text": "da",
-      "userId": "pVU5D_E",
-      "date": "2024-11-21T23:38:46.007Z"
+      "userId": "67267jo",
+      "text": "Prueba",
+      "date": "2024-11-27T19:00:17.760Z",
+      "imageUrl": "https://i.ibb.co/2sT37Pj/020z181619788503.jpg"
     }
   ]
 }

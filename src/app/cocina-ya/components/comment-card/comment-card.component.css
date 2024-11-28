@@ -1,0 +1,14 @@
+/* Imagen pequeña, ocupando un espacio reducido */
+.img-thumbnail-small {
+    width: 100px;        /* Tamaño pequeño de la imagen */
+    height: auto;        /* Mantener la proporción de la imagen */
+    cursor: pointer;     /* Apuntar a la imagen para indicar que es clickeable */
+    object-fit: cover;    /* Recortar la imagen si es necesario para ajustarse al espacio */
+    margin-bottom: 10px;  /* Separar la imagen del texto */
+  }
+  
+  /* Opcional: mejorar el espaciado entre elementos */
+  .card-body {
+    padding-bottom: 20px;  /* Asegurarse de que haya espacio entre la imagen y la información del usuario */
+  }
+  

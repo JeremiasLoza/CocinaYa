@@ -14,7 +14,7 @@ import { Commentary } from '../../models/commentary';
 })
 export class RecipeDetailModalComponent implements OnInit {
 
-  
+
   @Input() recipe!: Recipe;
   @Input() index!: number;
   @Input() recipes!: Recipe[];
@@ -24,25 +24,25 @@ export class RecipeDetailModalComponent implements OnInit {
   isHeartActive !: boolean;
   recipeIngredients: string[] = [];
   isLogged = false;
-  userId : string = '';
-  comments: any [] = []
-  comentaryId : string = '';
+  userId: string = '';
+  comments: any[] = []
+  comentaryId: string = '';
 
   constructor(
     public recipeListService: RecipeListService,
     private favoriteService: FavoritesService,
     private authService: AuthLoginService,
     private toastr: ToastrService,
-    private commentService : CommentService) { }
+    private commentService: CommentService) { }
 
   ngOnInit(): void {
     this.recipeIngredients = this.recipeListService.getRecipeIngredients(this.recipe);
     this.justifyInstructions(this.recipe.strInstructions);
-    
+
     this.authService.isLoggedIn().subscribe(response => {
       this.isLogged = response;
       if (this.isLogged) {
-        this.userId = localStorage.getItem('token')??''
+        this.userId = localStorage.getItem('token') ?? ''
         this.favoriteService.favorites$.subscribe((favoriteIds) => {
           this.isHeartActive = favoriteIds.includes(this.recipe.idMeal);
         })
@@ -54,22 +54,24 @@ export class RecipeDetailModalComponent implements OnInit {
   }
 
 
-  getComments(recipeId : string){
-    this.commentService.getCommentByRecipeId(recipeId).subscribe(data=>{
+  getComments(recipeId: string) {
+    this.commentService.getCommentByRecipeId(recipeId).subscribe(data => {
       this.comments = data.reverse();
-      
+
     })
   }
 
-  handleCommentAdded(newComment: { text: string, userId: string }): void {
+  handleCommentAdded(newComment: { text: string, userId: string, imageUrl: string | null}): void {
+    console.log(newComment.imageUrl);
     const commentToAdd: Commentary = {
       id: Math.random().toString(36).substr(2, 9),
       recipeId: this.recipe.idMeal,
-      text: newComment.text,
       userId: newComment.userId,
-      date: new Date().toISOString()  // Fecha actual
+      text: newComment.text,
+      date: new Date().toISOString(),  // Fecha actual
+      ...(newComment.imageUrl ? { imageUrl: newComment.imageUrl} : {})
     };
-  
+
     this.commentService.addComment(commentToAdd).subscribe(() => {
       this.comments.unshift(commentToAdd);  // Agregar el nuevo comentario a la lista
     });
