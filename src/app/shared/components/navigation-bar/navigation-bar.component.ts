@@ -18,9 +18,7 @@ export class NavigationBarComponent implements OnInit {
   categories: Category[] = [];
 
   ngOnInit() {
-    this.authService.isLoggedIn().subscribe(response => {
-      this.isLogged = response;
-    })
+    
     const observer: Observer<any> = {
       next: (data) => {
         this.categories = data.categories;
@@ -32,6 +30,9 @@ export class NavigationBarComponent implements OnInit {
     }
 
     this.categoryService.getAllCategories().subscribe(observer);
+    this.authService.isLoggedIn().subscribe(response => {
+      this.isLogged = response;
+    })
 
   }
 

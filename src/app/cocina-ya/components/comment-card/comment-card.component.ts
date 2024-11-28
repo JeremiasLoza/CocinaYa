@@ -4,8 +4,6 @@ import { CommentService } from '../../services/comment.service';
 import { User } from '../../models/user';
 import { Commentary } from '../../models/commentary';
 import { UploadImageService } from '../../services/upload-image.service';
-import{Modal} from 'bootstrap';
-
 @Component({
   selector: 'app-comment-card',
   templateUrl: './comment-card.component.html',
@@ -26,6 +24,7 @@ export class CommentCardComponent implements OnInit {
   isLogged = false;
   userId : string = '';
   selectedImage : string | undefined= '';
+  isModalOpen:boolean=false;
 
   constructor(private commentService : CommentService, private auth : AuthLoginService,private imageService : UploadImageService){}
 
@@ -39,16 +38,15 @@ export class CommentCardComponent implements OnInit {
     
   }
 
-
   openModal(imageUrl: string | undefined): void {
     this.selectedImage = imageUrl;
-    const modalElement = document.getElementById('imageModal');
-    if (modalElement) {
-      const modal = new Modal(modalElement);
-      modal.show();
-    }
+    this.isModalOpen = true;
   }
-  
+
+  closeModal():void{
+    this.isModalOpen=false;
+  }
+
   deleteComment(): void {
     this.commentDeleted.emit(this.comment.id);
     this.commentService.deleteComment(this.comment.id).subscribe();
