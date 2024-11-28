@@ -36,7 +36,6 @@ export class UserPageComponent implements OnInit{
       password: data[0].password
 
     };
-    console.log('Usuario cargado:', this.user); // Para verificar el resultado
   }
 
  )}
