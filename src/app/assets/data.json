@@ -15,10 +15,10 @@
       "id": "bAl_DTd"
     },
     {
-      "name": "Alan",
+      "name": "Alitan",
       "lastName": "Palavecino",
-      "email": "alan@a.com",
-      "password": "alan1",
+      "email": "alan@pala.com",
+      "password": "Pala12345",
       "id": "6XZoDXh"
     },
     {
@@ -55,6 +55,13 @@
       "email": "pala@alan.com",
       "password": "Puno123@",
       "id": "pVU5D_E"
+    },
+    {
+      "name": "Fiorella",
+      "lastName": "Hermida",
+      "email": "fiorella@gmail.com",
+      "password": "Aa123456",
+      "id": "7vt-cwj"
     }
   ],
   "favorites": [
@@ -71,7 +78,9 @@
     {
       "userId": "6XZoDXh",
       "recipeIds": [
-        "52897"
+        "53281",
+        "53318",
+        "53525"
       ],
       "id": 3
     },
@@ -113,6 +122,11 @@
         "52897"
       ],
       "id": 10
+    },
+    {
+      "userId": "7vt-cwj",
+      "recipeIds": [],
+      "id": 11
     }
   ],
   "commentary": [
@@ -152,6 +166,28 @@
       "text": "trw",
       "date": "2024-11-28T03:25:39.844Z",
       "imageUrl": "https://i.ibb.co/kyMRNWk/020z181619788503.jpg"
+    },
+    {
+      "id": "sabzjcz2b",
+      "recipeId": "53138",
+      "userId": "6XZoDXh",
+      "text": "Los hice y quedaron riquisimos!!! recomiendo que los hagan",
+      "date": "2026-10-10T19:02:09.519Z"
+    },
+    {
+      "id": "h2lk0h2t8",
+      "recipeId": "53525",
+      "userId": "6XZoDXh",
+      "text": "Esta salsa para los tacos es increible!!!",
+      "date": "2026-10-10T19:03:31.683Z"
+    },
+    {
+      "id": "fma964okp",
+      "recipeId": "53281",
+      "userId": "6XZoDXh",
+      "text": "quedaria mejor con otro tipo de carne, pero esta aprobado",
+      "date": "2026-10-11T03:17:53.429Z",
+      "imageUrl": "https://i.ibb.co/kgd8SL5p/Captura-de-pantalla-2024-10-23-182525.png"
     }
   ]
 }
