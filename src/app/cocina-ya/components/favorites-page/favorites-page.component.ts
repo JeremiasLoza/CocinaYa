@@ -25,6 +25,7 @@ export class FavoritesPageComponent implements OnInit {
   }
 
   getFavorites() {
+    
     this.favoriteService.favorites$.pipe(
       switchMap((favoritesIds: string[]) => {
         if (favoritesIds.length === 0) {
@@ -40,10 +41,14 @@ export class FavoritesPageComponent implements OnInit {
       })
     ).subscribe((recipes: Recipe[]) => {
       // Solo actualiza si hay un cambio
+       
       if (this.recipeList !== recipes) {
         this.recipeList = recipes;
+        this.haveFavorites = recipes.length > 0;
+      
         if(this.router.url === '/favorites')
           this.recipeListService.setRecipes(this.recipeList);
+        
       }
     });
   }
