@@ -10,6 +10,7 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { DashboardComponent } from './auth/components/dashboard/dashboard.component';
 import { FavoritesPageComponent } from './cocina-ya/components/favorites-page/favorites-page.component';
+import { authGuard } from './auth/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
 {path :'edit-user/:id', component: EditUserComponent},
 { path: 'login', component: LoginComponent},
 { path: 'register', component: RegisterComponent},
-{path:'favorites', component:FavoritesPageComponent},
+{path: 'favorites', component: FavoritesPageComponent,  canActivate: [authGuard]},
 {path: 'profile', component: UserPageComponent},
 { path: '', redirectTo: 'home', pathMatch: 'full' },
 { path: '**' , component: HomePageComponent },
