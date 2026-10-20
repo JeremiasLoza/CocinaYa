@@ -5,7 +5,6 @@ import { RecipeService } from '../../services/recipe.service';
 import { RecipeListService } from '../../services/recipe-list.service';
 import { forkJoin, switchMap } from 'rxjs';
 import {  Router } from '@angular/router';
-import { useAnimation } from '@angular/animations';
 
 @Component({
   selector: 'app-favorites-page',

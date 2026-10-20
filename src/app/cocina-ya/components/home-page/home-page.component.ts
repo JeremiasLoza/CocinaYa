@@ -23,7 +23,7 @@ export class HomePageComponent implements OnInit {
   getRecipesRamdom(cant: number) {
     const uniquesRecipe = new Set<string>();
     const fetchRecipes = () => {
-      this.service.get1Ramdom().subscribe(
+      this.service.getRandomRecipe().subscribe(
         (response) => {
           const recipe = response.meals[0];
           if (!uniquesRecipe.has(recipe.idMeal)) {
