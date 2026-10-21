@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../../cocina-ya/services/category.service';
 import { Category } from '../../../cocina-ya/models/category';
 import { Observer } from 'rxjs';
@@ -26,7 +26,7 @@ export class NavigationBarComponent implements OnInit {
       error: (error) => {
         console.log(error);
       },
-      complete: () => { console.log("Completed"); }
+      complete: () => {  }
     }
 
     this.categoryService.getAllCategories().subscribe(observer);

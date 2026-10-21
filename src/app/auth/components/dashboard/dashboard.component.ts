@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../cocina-ya/models/user';
 import { AuthLoginService } from '../../../cocina-ya/services/auth.login.service';
@@ -8,13 +8,12 @@ import { AuthLoginService } from '../../../cocina-ya/services/auth.login.service
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit {
   public user!: User;
 
   constructor(private loginService: AuthLoginService, private router: Router) { }
 
-  ngOnDestroy(): void {
-  }
+
 
   ngOnInit(): void {
     const value = localStorage.getItem('token');

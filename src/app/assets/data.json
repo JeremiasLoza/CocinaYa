@@ -15,7 +15,7 @@
       "id": "bAl_DTd"
     },
     {
-      "name": "Alitan",
+      "name": "Alaaaan",
       "lastName": "Palavecino",
       "email": "alan@pala.com",
       "password": "Pala12345",
@@ -189,6 +189,14 @@
       "text": "quedaria mejor con otro tipo de carne, pero esta aprobado",
       "date": "2026-10-11T03:17:53.429Z",
       "imageUrl": "https://i.ibb.co/kgd8SL5p/Captura-de-pantalla-2024-10-23-182525.png"
+    },
+    {
+      "id": "d22fl4vj6",
+      "recipeId": "53318",
+      "userId": "6XZoDXh",
+      "text": "aaaaaaaaaaaaaaa",
+      "date": "2026-10-21T14:17:43.451Z",
+      "imageUrl": "https://i.ibb.co/Cs0hV93L/Captura-de-pantalla-2024-10-23-182525.png"
     }
   ]
 }

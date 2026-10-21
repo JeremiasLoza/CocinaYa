@@ -3,7 +3,6 @@ import { AuthLoginService } from '../../services/auth.login.service';
 import { CommentService } from '../../services/comment.service';
 import { User } from '../../models/user';
 import { Commentary } from '../../models/commentary';
-import { UploadImageService } from '../../services/upload-image.service';
 @Component({
   selector: 'app-comment-card',
   templateUrl: './comment-card.component.html',
@@ -26,7 +25,7 @@ export class CommentCardComponent implements OnInit {
   selectedImage : string | undefined= '';
   isModalOpen:boolean=false;
 
-  constructor(private commentService : CommentService, private auth : AuthLoginService,private imageService : UploadImageService){}
+  constructor(private commentService : CommentService, private auth : AuthLoginService){}
 
   user !: User;
 
