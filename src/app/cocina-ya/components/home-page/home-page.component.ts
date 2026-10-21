@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { RecipeListService } from '../../services/recipe-list.service';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',

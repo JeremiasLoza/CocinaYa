@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Recipe } from '../models/recipe';
-import { BehaviorSubject, map, mergeMap, Observable, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

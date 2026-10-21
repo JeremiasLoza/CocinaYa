@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { forkJoin, map, Observable, switchMap } from 'rxjs';
-import { RecipeService } from './recipe.service';
-import { Recipe } from '../models/recipe';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +9,7 @@ import { Recipe } from '../models/recipe';
 export class CategoryService {
   private apiUrl = 'https://www.themealdb.com/api/json/v1/1/';
 
-  constructor(private http: HttpClient , private recipeService : RecipeService) { }
+  constructor(private http: HttpClient ) { }
 
   getAllCategories() : Observable<any> {
     return this.http.get<any>(`${this.apiUrl}categories.php`);

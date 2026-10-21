@@ -8,7 +8,6 @@ import { UserPageComponent } from './cocina-ya/components/user-page/user-page.co
 import { EditUserComponent } from './cocina-ya/components/edit-user/edit-user.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { RegisterComponent } from './auth/components/register/register.component';
-import { DashboardComponent } from './auth/components/dashboard/dashboard.component';
 import { FavoritesPageComponent } from './cocina-ya/components/favorites-page/favorites-page.component';
 import { authGuard } from './auth/guards/auth.guard';
 

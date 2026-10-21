@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IngredientService } from '../../services/ingredient.service';
 import { Ingredient } from '../../models/ingredient';
 import { Observer } from 'rxjs';
-import { Recipe } from '../../models/recipe';
 import { RecipeListService } from '../../services/recipe-list.service';
 
 

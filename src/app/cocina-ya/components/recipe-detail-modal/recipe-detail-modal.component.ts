@@ -25,8 +25,8 @@ export class RecipeDetailModalComponent implements OnInit {
   recipeIngredients: string[] = [];
   isLogged = false;
   userId: string = '';
-  comments: any[] = []
-  comentaryId: string = '';
+  comments: any[] = [];
+
 
   constructor(
     public recipeListService: RecipeListService,

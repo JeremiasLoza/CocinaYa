@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { FavoritesService } from '../../services/favorites.service';
 import { ToastrService } from 'ngx-toastr';
-import { AuthLoginService } from '../../services/auth.login.service';
-import { User } from '../../models/user';
+import { AuthLoginService } from '../../services/auth.login.service';   
 
 
 @Component({

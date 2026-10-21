@@ -1,8 +1,7 @@
-import { Component, Input, OnInit, } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { RecipeListService } from '../../services/recipe-list.service';
 import { Recipe } from '../../models/recipe';
 import { combineLatest } from 'rxjs';
-import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-list-recipes',
@@ -13,7 +12,6 @@ export class ListRecipesComponent implements OnInit {
   filteredRecipes: Recipe[] = [];
   selectedRecipe : Recipe | null = null;
   selectedIndex !: number ;
-  favoriteRecipeIds: string[] = [];
   constructor(public recipesListService: RecipeListService) { }
 
   ngOnInit(): void {
