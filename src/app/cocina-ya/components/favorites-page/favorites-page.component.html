@@ -1,14 +1,19 @@
 
-<div *ngIf="haveFavorites">
+<div *ngIf="errorLoading" class="alert alert-warning text-center mx-3">
+  No pudimos cargar las recetas en este momento.
+  Por favor, intentá nuevamente más tarde.
+</div>
+
+<div *ngIf="!errorLoading && haveFavorites">
   <app-list-recipes></app-list-recipes>
 </div>
 
-<div *ngIf="!haveFavorites" class="container py-5">
+<div *ngIf="!errorLoading && !haveFavorites" class="container py-5">
   <div class="empty-favorites text-center mx-auto p-4 p-md-5">
 
     <div class="empty-favorites-icon mb-3">
-  ♥
-</div>
+      ♥
+    </div>
 
     <h2 class="h4 mb-3">Todavía no tenés favoritos</h2>
 

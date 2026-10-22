@@ -14,6 +14,7 @@ import {  Router } from '@angular/router';
 export class FavoritesPageComponent implements OnInit {
   recipeList: Recipe[] = [];
   userId = '';
+  errorLoading = false;
   haveFavorites = true;
   constructor(private favoriteService: FavoritesService, private recipeService: RecipeService, private recipeListService: RecipeListService, private router : Router) { }
 
@@ -38,18 +39,24 @@ export class FavoritesPageComponent implements OnInit {
         const recipeRequests = favoritesIds.map(id => this.recipeService.getById(id));
         return forkJoin(recipeRequests);
       })
-    ).subscribe((recipes: Recipe[]) => {
-      // Solo actualiza si hay un cambio
-       
-      if (this.recipeList !== recipes) {
-        this.recipeList = recipes;
-        this.haveFavorites = recipes.length > 0;
-      
-        if(this.router.url === '/favorites')
-          this.recipeListService.setRecipes(this.recipeList);
-        
+    ).subscribe({
+  next: (recipes: Recipe[]) => {
+    this.errorLoading = false;
+
+    if (this.recipeList !== recipes) {
+      this.recipeList = recipes;
+      this.haveFavorites = recipes.length > 0;
+
+      if (this.router.url === '/favorites') {
+        this.recipeListService.setRecipes(this.recipeList);
       }
-    });
+    }
+  },
+  error: (error) => {
+    console.error('Error al cargar favoritos:', error);
+    this.errorLoading = true;
+  }
+});
   }
  
 }
