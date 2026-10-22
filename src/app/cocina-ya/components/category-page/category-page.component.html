@@ -1,3 +1,12 @@
+
 <h2 class="text-center pt-3">{{category}}</h2>
-<app-ingredient-filtering></app-ingredient-filtering>
-<app-list-recipes></app-list-recipes>
+
+<div *ngIf="errorLoading" class="alert alert-warning text-center mx-3">
+    No pudimos cargar las recetas en este momento.
+    Por favor, intentá nuevamente más tarde.
+</div>
+
+<div *ngIf="!errorLoading">
+    <app-ingredient-filtering></app-ingredient-filtering>
+    <app-list-recipes></app-list-recipes>
+</div>

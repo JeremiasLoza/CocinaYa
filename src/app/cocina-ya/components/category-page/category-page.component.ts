@@ -15,17 +15,20 @@
     constructor(private categoryService: CategoryService, private route: ActivatedRoute, private recipesListService: RecipeListService,private recipeService : RecipeService) { }
     
     category: string | null = "";
+    errorLoading = false;
 
     ngOnInit(): void {
 
       const observer: Observer<any> = {
         next: (data) => {
+          this.errorLoading = false;
           this.recipesListService.setRecipes(data);
         },
         error: (error) => {
           console.log(error);
+          this.errorLoading = true;
         },
-        complete: () => { console.log("Request completed") }
+        complete: () => { }
       }
 
       this.route.paramMap.subscribe((params) => {
