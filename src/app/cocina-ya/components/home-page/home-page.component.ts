@@ -11,6 +11,7 @@ import { RecipeListService } from '../../services/recipe-list.service';
 export class HomePageComponent implements OnInit {
 
   recipeList: Recipe[] = [];
+  errorLoading = false;
 
   constructor(private service: RecipeService, private recipesList: RecipeListService) { }
 
@@ -35,6 +36,7 @@ export class HomePageComponent implements OnInit {
         },
         (error) => {
           console.log(error + ' - Algo salió mal en la función de recetas en home page');
+          this.errorLoading = true;
         }
       );
     };

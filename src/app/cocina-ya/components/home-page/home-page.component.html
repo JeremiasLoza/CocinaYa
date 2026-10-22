@@ -1,2 +1,8 @@
 <h2 class="text-center pt-3">Recipes</h2>
+
+<div *ngIf="errorLoading" class="alert alert-warning text-center mx-3">
+  No pudimos cargar las recetas en este momento.
+  Por favor, intentá nuevamente más tarde.
+</div>
+
 <app-list-recipes></app-list-recipes>
