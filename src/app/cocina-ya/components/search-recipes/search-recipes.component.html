@@ -1,8 +1,14 @@
-<div *ngIf="haveRecipes">
+
+<div *ngIf="errorLoading" class="alert alert-warning text-center mx-3">
+    No pudimos cargar las recetas en este momento.
+    Por favor, intentá nuevamente más tarde.
+</div>
+
+<div *ngIf="!errorLoading && haveRecipes">
     <app-ingredient-filtering></app-ingredient-filtering>
     <app-list-recipes></app-list-recipes>
 </div>
 
-<div *ngIf="!haveRecipes">
+<div *ngIf="!errorLoading && !haveRecipes">
     <p class="text-center mt-4">Recipe not found</p>
 </div>

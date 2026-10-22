@@ -15,6 +15,7 @@ export class SearchRecipesComponent {
   public searchText: string = '';
   recipeList : Recipe[] = [];
   haveRecipes = true;
+  errorLoading = false;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -25,21 +26,31 @@ export class SearchRecipesComponent {
   }
 
 
-  searchRecipes() {
-    this.recipeService.getAllRecipes().subscribe((recipes) => {
-      // Filtra las recetas que incluyen el `searchText` en el nombre
-        this.recipeList = recipes.filter((recipe: Recipe) => 
-        recipe.strMeal.toLowerCase().includes((this.searchText)?this.searchText.toLowerCase():'')
+searchRecipes() {
+  this.recipeService.getAllRecipes().subscribe({
+    next: (recipes) => {
+      // Filtra las recetas que incluyen el searchText en el nombre
+      this.recipeList = recipes.filter((recipe: Recipe) =>
+        recipe.strMeal.toLowerCase().includes(
+          (this.searchText) ? this.searchText.toLowerCase() : ''
+        )
       );
-      // Pasa la lista filtrada al servicio `recipeListService` para que se muestre en el list-recipes component
-      if(this.recipeList.length < 1){
+
+      // Pasa la lista filtrada al servicio recipeListService
+      if (this.recipeList.length < 1) {
         this.haveRecipes = false;
-      }else
-      {
+      } else {
         this.haveRecipes = true;
       }
+
       this.recipeListService.setRecipes(this.recipeList);
-    });
-  }
+      this.errorLoading = false;
+    },
+    error: (error) => {
+      console.error('Error al buscar recetas:', error);
+      this.errorLoading = true;
+    }
+  });
+}
 
 }
