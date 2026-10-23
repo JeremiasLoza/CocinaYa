@@ -1,6 +1,11 @@
+
 <div class="ingredient-card">
-    <img *ngIf="ingredient !== 'Candied Peel'" src="https://www.themealdb.com/images/ingredients/{{ingredient}}-Small.png" alt="{{ingredient}}" style="text-align: center;">
-    <img *ngIf="ingredient === 'Candied Peel'" src="https://www.themealdb.com/images/ingredients/{{ingredient}}-Small.png" alt="{{ingredient}}" style="text-align: center; width: 100px;">
+    <div class="ingredient-image">
+        <img
+            src="https://www.themealdb.com/images/ingredients/{{ingredient}}-Small.png"
+            alt="{{ingredient}}">
+    </div>
+
     <div class="card-body">
         <h5>{{measure}} {{ingredient}}</h5>
     </div>
