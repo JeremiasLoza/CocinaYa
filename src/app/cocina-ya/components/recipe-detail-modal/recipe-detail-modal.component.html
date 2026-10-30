@@ -1,5 +1,5 @@
 <div class="modal fade show d-block" role="dialog" style="background-color: rgba(0, 0, 0, 0.9);" (click)="onBackdropClick($event)">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="max-width: 70vw;">
+    <<div class="modal-dialog modal-lg modal-dialog-centered recipe-modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{ recipe.strMeal }}</h5>
@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="recipe-container row">
+                <div class="recipe-container row">  
                     <!-- Imagen de la receta -->
                     <div class="recipe-img col">
                         <img src="{{recipe.strMealThumb}}" alt="{{recipe.strMeal}}" class="img-fluid">

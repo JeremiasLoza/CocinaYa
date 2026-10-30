@@ -4,3 +4,81 @@
     cursor: pointer;
     transition: color 0.3s ease;
 }
+
+/* Ajustes generales del modal */
+.recipe-modal-dialog {
+    max-width: 70vw;
+}
+
+.recipe-modal-dialog .modal-content {
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-modal-dialog .modal-body {
+    overflow-y: auto;
+}
+
+.recipe-modal-dialog .recipe-img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.recipe-modal-dialog .ingredients {
+    align-content: start;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 767.98px) {
+    .recipe-modal-dialog {
+        width: auto;
+        max-width: none;
+        margin: 10px;
+    }
+
+    .recipe-modal-dialog .modal-content {
+        max-height: calc(100vh - 20px);
+    }
+
+    .recipe-modal-dialog .recipe-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .recipe-modal-dialog .recipe-img,
+    .recipe-modal-dialog .ingredients {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .recipe-modal-dialog .recipe-img {
+        margin-bottom: 20px;
+    }
+
+    .recipe-modal-dialog .ingredients {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 0;
+    }
+
+    .recipe-modal-dialog .ingredient-card {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .recipe-modal-dialog .modal-header {
+        gap: 8px;
+    }
+
+    .recipe-modal-dialog .modal-title {
+        font-size: 1rem;
+        overflow-wrap: anywhere;
+    }
+
+    .recipe-modal-dialog .modal-footer {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
