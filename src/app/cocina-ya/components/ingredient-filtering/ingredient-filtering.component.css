@@ -1,5 +1,136 @@
-.row {
-    overflow-x: hidden;
-    max-width: 100%;
-  }
-  
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    width: 84%;
+    margin: 0 auto;
+    padding: 8px 0 0;
+    box-sizing: border-box;
+}
+
+.ingredient-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    min-height: 48px;
+    padding: 10px 14px;
+    border: 1px solid #dce3d5;
+    border-radius: 10px;
+    background-color: #faf9f4;
+    color: #314528;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.ingredient-option:hover {
+    background-color: #f0f4eb;
+    border-color: #879779;
+}
+
+.ingredient-option:has(input:checked) {
+    background-color: #e7eedf;
+    border-color: #49643c;
+    color: #314528;
+}
+
+.ingredient-option input {
+    accent-color: #49643c;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.ingredient-option span {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 992px) {
+    .ingredients-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .ingredients-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .ingredient-option {
+        padding: 9px;
+        font-size: 14px;
+    }
+}
+
+
+.ingredient-search {
+    width: 84%;
+    margin: 24px auto 16px;
+}
+
+.ingredient-search input {
+    border: 1px solid #dce3d5;
+    border-radius: 10px;
+    padding: 11px 14px;
+    color: #314528;
+    background-color: #faf9f4;
+}
+
+.ingredient-search input:focus {
+    border-color: #879779;
+    box-shadow: 0 0 0 0.2rem rgba(73, 100, 60, 0.15);
+}
+
+
+
+.selected-ingredients {
+    width: 86%;
+    margin: 0 auto 20px;
+}
+
+.selected-ingredients h5 {
+    margin-bottom: 12px;
+    color: #314528;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.selected-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.selected-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px 6px 14px;
+    border: 1px solid #cbd8c1;
+    border-radius: 20px;
+    background-color: #e7eedf;
+    color: #314528;
+    font-size: 14px;
+}
+
+.remove-ingredient {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #314528;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.remove-ingredient:hover {
+    background-color: #d2dfc7;
+}
+

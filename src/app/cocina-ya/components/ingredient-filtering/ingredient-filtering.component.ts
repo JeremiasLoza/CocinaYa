@@ -12,6 +12,7 @@ import { RecipeListService } from '../../services/recipe-list.service';
 })
 export class IngredientFilteringComponent implements OnInit {
   ingredientList: Ingredient[] = [];
+  searchText: string = '';
 
   constructor(private ingredientService: IngredientService, private recipesListService: RecipeListService) { }
 
@@ -39,10 +40,33 @@ export class IngredientFilteringComponent implements OnInit {
     this.recipesListService.setSelectedIngredients([]);
   }
 
+  get visibleIngredients(): Ingredient[] {
+    if (this.searchText.trim()){
+      return this.ingredientList.filter(ingredient => 
+        ingredient.strIngredient.toLowerCase().includes(
+          this.searchText.trim().toLowerCase()
+        ));
+    }
+    return this.ingredientList.slice(0,20);
+  }
+
+  
+get selectedIngredients(): Ingredient[] {
+  return this.ingredientList.filter(ingredient => ingredient.selected);
+}
+
+
   onIngredientChange():void{
     const selectedIngredients = this.ingredientList.filter(ingredient => ingredient.selected).map(ingredient => ingredient.strIngredient);
     this.recipesListService.setSelectedIngredients(selectedIngredients);
     }
+
+    
+removeIngredient(ingredient: Ingredient): void {
+  ingredient.selected = false;
+  this.onIngredientChange();
+}
+
 
 
 

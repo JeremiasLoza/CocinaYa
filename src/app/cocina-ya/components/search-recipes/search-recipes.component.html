@@ -9,6 +9,37 @@
     <app-list-recipes></app-list-recipes>
 </div>
 
-<div *ngIf="!errorLoading && !haveRecipes">
-    <p class="text-center mt-4">Recipe not found</p>
+
+<div *ngIf="!errorLoading && !haveRecipes" class="no-recipes-container">
+    <div class="no-recipes-icon">
+       
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="36"
+    height="36"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true">
+
+    <circle cx="10.5" cy="10.5" r="6.5"></circle>
+    <path d="m15.5 15.5 5 5"></path>
+    <path d="m8.5 8.5 4 4"></path>
+    <path d="m12.5 8.5-4 4"></path>
+</svg>
+
+    </div>
+
+    <h4>¡No encontramos esa receta!</h4>
+
+    <p class="no-recipes-description">
+        No encontramos resultados para tu búsqueda.
+    </p>
+
+    <p class="no-recipes-tip">
+        Probá con otro nombre o buscá una receta diferente.
+    </p>
 </div>
