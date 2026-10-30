@@ -1,16 +1,18 @@
-<div class="modal fade show d-block" role="dialog" style="background-color: rgba(0, 0, 0, 0.9);" (click)="onBackdropClick($event)">
+<div class="modal fade show d-block" role="dialog" style="background-color: rgba(0, 0, 0, 0.9);"
+    (click)="onBackdropClick($event)">
     <<div class="modal-dialog modal-lg modal-dialog-centered recipe-modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{ recipe.strMeal }}</h5>
-                <i *ngIf="isLogged" [class]="isHeartActive ? 'fas fa-heart heart-icon me-auto ms-2' : 'far fa-heart heart-icon me-auto ms-2'"
-                        (click)="onHeartClick(userId,recipe.idMeal)"></i>
+                <i *ngIf="isLogged"
+                    [class]="isHeartActive ? 'fas fa-heart heart-icon me-auto ms-2' : 'far fa-heart heart-icon me-auto ms-2'"
+                    (click)="onHeartClick(userId,recipe.idMeal)"></i>
                 <button type="button" class="close ms-auto" (click)="closeModal()" aria-label="Close">
                     <span>&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="recipe-container row">  
+                <div class="recipe-container row">
                     <!-- Imagen de la receta -->
                     <div class="recipe-img col">
                         <img src="{{recipe.strMealThumb}}" alt="{{recipe.strMeal}}" class="img-fluid">
@@ -26,27 +28,33 @@
                     </div>
                 </div>
                 <!-- Instrucciones de la receta -->
-                <div class="instructions" >
-                    <h2 style="text-align:center;margin: 10px 0 10px 0;">Instructions</h2>
-                    <p style="text-align: justify;">{{recipe.strInstructions}}</p>
+
+                <div class="instructions">
+                    <h2>Instructions</h2>
+                    <div class="instructions-content">
+                        <p>{{ recipe.strInstructions }}</p>
+                    </div>
                 </div>
-                
+
+
                 <div class="comments-section">
                     <h3 class="text-center">Comments</h3>
                     <div *ngIf="isLogged">
-                        <app-comment-form [userId]="userId" (commentAdded)="handleCommentAdded($event)"></app-comment-form>
-                     </div>
+                        <app-comment-form [userId]="userId"
+                            (commentAdded)="handleCommentAdded($event)"></app-comment-form>
+                    </div>
                     <div *ngFor="let comment of comments" class="comment-card">
-                        <app-comment-card [comment]="comment" (commentDeleted)="handleCommentDeleted($event)"></app-comment-card>
+                        <app-comment-card [comment]="comment"
+                            (commentDeleted)="handleCommentDeleted($event)"></app-comment-card>
                     </div>
                 </div>
             </div>
-            
+
             <div class="modal-footer">
                 <button class="btn btn-secondary" (click)="previousRecipe()" [disabled]="index === 0">Previous</button>
                 <button class="btn btn-secondary" (click)="nextRecipe()"
                     [disabled]="index === recipes.length - 1">Next</button>
             </div>
         </div>
-    </div>
+</div>
 </div>

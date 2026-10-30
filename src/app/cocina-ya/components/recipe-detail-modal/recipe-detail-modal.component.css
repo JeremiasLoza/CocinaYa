@@ -82,3 +82,57 @@
         gap: 8px;
     }
 }
+
+
+/* Sección de instrucciones */
+.recipe-modal-dialog .instructions {
+    margin-top: 24px;
+    padding: 0 8px;
+}
+
+.recipe-modal-dialog .instructions h2 {
+    margin: 0 0 16px;
+    text-align: center;
+    color: #314528;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.recipe-modal-dialog .instructions-content {
+    padding: 20px 24px;
+    border: 1px solid #e1e7db;
+    border-radius: 12px;
+    background-color: #faf9f4;
+}
+
+.recipe-modal-dialog .instructions-content p {
+    margin: 0;
+    color: #3f453c;
+    font-size: 1rem;
+    line-height: 1.8;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+/* Ajustes para celular */
+@media (max-width: 767.98px) {
+    .recipe-modal-dialog .instructions {
+        margin-top: 20px;
+        padding: 0;
+    }
+
+    .recipe-modal-dialog .instructions h2 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+
+    .recipe-modal-dialog .instructions-content {
+        padding: 16px;
+    }
+
+    .recipe-modal-dialog .instructions-content p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        text-align: left;
+    }
+}
